@@ -1,0 +1,76 @@
+.video-button {
+	$mobile_size: 71;
+	$desktop_size: 120;
+	$large_size: 200;
+
+	position: absolute;
+	top: 50%;
+	right: 0;
+	left: 0;
+	z-index: 4;
+	width: rem-calc($mobile_size);
+	height: rem-calc($mobile_size);
+	margin: rem-calc(-($mobile_size / 2)) auto;
+	font-family: $font-mreaves;
+	font-size: rem-calc(9.5);
+	color: white;
+	line-height: 1;
+
+	@include media('>phone') {
+		width: rem-calc($desktop_size);
+		height: rem-calc($desktop_size);
+		margin: rem-calc(-($desktop_size / 2)) auto;
+		font-size: rem-calc(18);
+	}
+
+	@include media('>desktop-large') {
+		width: rem-calc($large_size);
+		height: rem-calc($large_size);
+		margin: rem-calc(-($large_size / 2)) auto;
+		font-size: rem-calc(27);
+	}
+
+	&::before {
+		content: '';
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: rem-calc($mobile_size);
+		height: rem-calc($mobile_size);
+		background: black;
+		opacity: 0.4;
+		border-radius: 300px;
+
+		@include media('>phone') {
+			width: rem-calc($desktop_size);
+			height: rem-calc($desktop_size);
+		}
+
+		@include media('>desktop-large') {
+			width: rem-calc($large_size);
+			height: rem-calc($large_size);
+		}
+	}
+
+	span {
+		position: relative;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: rem-calc($mobile_size);
+		height: rem-calc($mobile_size);
+		border: 1px solid white;
+		border-radius: 300px;
+		pointer-events: none;
+
+		@include media('>phone') {
+			width: rem-calc($desktop_size);
+			height: rem-calc($desktop_size);
+		}
+
+		@include media('>desktop-large') {
+			width: rem-calc($large_size);
+			height: rem-calc($large_size);
+		}
+	}
+}

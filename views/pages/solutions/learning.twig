@@ -1,0 +1,38 @@
+<section id="learning" class="learning">
+    <div class="learning__wrapper">
+        <div class="learning__content">
+			<div class="learning__decoration">
+				{% include 'shared/media.twig' with {
+					source: theme.link ~ '/src/assets/img/dev/pages/solutions/remote-decoration.svg',
+					alt: 'bulb',
+					class: 'features__decoration--img',
+				}%}
+			</div>
+            <div class="learning__content--wrapper">
+				<header class="learning__content-header">
+					<h2 class="learning__content-title">{{ post.get_field('remote_learning_title') }}</h2>
+					{% if (post.get_field('remote_learning_subtitle')) %}
+						<strong class="learning__content-subtitle">{{ post.get_field('remote_learning_subtitle') }}</strong>
+					{% endif %}
+				</header>
+                {{ post.get_field('remote_learning_content') }}
+				{% include 'shared/button.twig' with {
+					tagName: 'a',
+					variation: 'simple',
+					style: 'dark-primary',
+					href: post.get_field('remote_learning_button').url,
+					label: post.get_field('remote_learning_button').title
+				}%}
+            </div>
+        </div>
+        <div class="learning__image">
+            <picture class="learning__featured--image">
+                {% include 'shared/media.twig' with {
+                    source: post.get_field('remote_learning_image').url,
+                    alt: post.get_field('remote_learning_image').alt,
+                    class: 'learning__featured-img',
+                }%}
+            </picture>
+        </div>
+    </div>
+</section>

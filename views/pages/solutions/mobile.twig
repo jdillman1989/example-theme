@@ -1,0 +1,64 @@
+<section id="mobile" class="mobile">
+	<div class="mobile__wrapper">
+
+		<header>
+			<h2>{{ post.get_field('mobile_title') }}</h2>
+		</header>
+
+		<div class="mobile__col mobile__col--one">
+			<div class="mobile__col-wrapper">
+				{% include 'shared/media.twig' with {
+					source: Image(post.get_field('mobile_image')).src,
+					alt: Image(post.get_field('mobile_image')).alt
+				}%}
+			</div>
+		</div>
+
+		<div class="mobile__col mobile__col--two">
+			<div class="mobile__col-wrapper">
+				<div id="mobile-slider" class="mobile__slider slider">
+					<div id="slider-items" class="slider__items owl-carousel">
+
+						{% for i in 1..4 %}
+							<div class="slider__item item">
+								<div class="item__wrapper">
+									{% include 'shared/media.twig' with {
+										source: theme.link ~ '/src/assets/img/dev/pages/solutions/' ~ i ~ '.svg',
+										alt: 'bulb'
+									}%}
+									{{ post.get_field('mobile_item_' ~ i) }}
+								</div>
+							</div>
+						{% endfor %}
+
+					</div>
+
+					<nav class="slider__controls">
+						<button
+							aria-label="Previous Solution"
+							class="slider__arrow slider__arrow--prev"
+							data-direction="prev">
+							{% include 'icons/slider-arrow.svg.twig' with {
+								direction: 'prev',
+							}%}
+						</button>
+
+						<div class="slider__indicator">
+							<span id="slider-indicator-current" class="slider__indicator-current">1</span>
+							<span class="slider__indicator-total">/4</span>
+						</div>
+
+						<button
+							aria-label="Next Solution"
+							class="slider__arrow slider__arrow--prev"
+							data-direction="next">
+							{% include 'icons/slider-arrow.svg.twig' with {
+								direction: 'next',
+							}%}
+						</button>
+					</nav>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

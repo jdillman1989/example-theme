@@ -1,0 +1,33 @@
+<section id="hero" class="hero">
+	<div class="hero__wrapper">
+		<div class="hero__col hero__col--one">
+			<div class="hero__col-wrapper">
+				<header class="hero__heading">
+					<figure class="hero__decoration">
+						{% include 'shared/media.twig' with {
+							source: Image(post.get_field('hero_text_decoration_image')).src,
+							alt: Image(post.get_field('hero_text_decroation_image')).alt,
+							class: 'hero__decoration--img',
+						}%}
+					</figure>
+					<h1 class="hero__title">{{ post.get_field('hero_title') }}</h1>
+				</header>
+				<div class="hero__content">
+					{{ post.get_field('hero_content') }}
+				</div>
+			</div>
+		</div>
+
+		<div class="hero__col hero__col--two">
+			<div class="hero__col-wrapper">
+				<picture class="hero__featured-image">
+					{% include 'shared/media.twig' with {
+						source: post.get_field('hero_image').url,
+						alt: post.get_field('hero_image').alt,
+						class: 'hero__featured-img',
+					}%}
+				</picture>
+			</div>
+		</div>
+	</div>
+</section>

@@ -1,0 +1,557 @@
+.page .case-studies {
+	position: relative;
+	padding-bottom: rem-calc(38);
+
+	@include media('>tablet') {
+		padding-bottom: rem-calc(50);
+	}
+
+	@include media('>desktop-small') {
+		padding-bottom: rem-calc(80);
+	}
+
+	@include media('>desktop-medium') {
+		padding-bottom: rem-calc(110);
+	}
+
+	@include media('>desktop-large') {
+		padding-bottom: rem-calc(150);
+	}
+
+	> * {
+		min-width: 0;
+	}
+
+	&__wrapper {
+		@extend %container;
+
+		display: flex;
+		flex-flow: column;
+
+		@include media('>phone') {
+			padding: 0 rem-calc(24);
+		}
+
+		@include media('>tablet') {
+			flex-flow: row;
+			align-items: flex-end;
+			padding: 0 rem-calc(50);
+		}
+
+		@include media('>desktop-small') {
+			padding: 0 rem-calc(80);
+		}
+
+		@include media('>desktop-large') {
+			padding: 0 rem-calc(170);
+		}
+	}
+
+	&__headline {
+		position: absolute;
+		top: rem-calc(56);
+		left: calc(100% - 12px);
+		font-family: $font-mreaves;
+		font-size: 10px;
+		text-transform: uppercase;
+		white-space: nowrap;
+		color: $color-gray;
+		transform: rotate(90deg);
+		transform-origin: 0 0;
+
+		@include media('>tablet') {
+			font-size: rem-calc(12);
+		}
+
+		@include media('>desktop-small') {
+			left: calc(100% - 80px);
+			font-size: rem-calc(14);
+		}
+
+		@include media('>desktop-medium') {
+			font-size: rem-calc(16);
+		}
+
+		@include media('>desktop-xlarge') {
+			left: auto;
+			right: rem-calc(170);
+		}
+	}
+
+	&__col {
+		&--one {
+			position: relative;
+			padding: rem-calc(80) rem-calc(12) 10px;
+
+			@include media('>tablet') {
+				padding: rem-calc(70) 0 rem-calc(70) rem-calc(70);
+				order: 2;
+				width: 45%;
+			}
+
+			@include media('>desktop-medium') {
+				padding-left: rem-calc(100);
+			}
+
+			@include media('>desktop-large') {
+				padding-left: rem-calc(130);
+				width: 47%;
+			}
+		}
+
+		&--two {
+			@include media('>tablet') {
+				order: 1;
+				width: 55%;
+			}
+
+			@include media('>desktop-large') {
+				width: 53%;
+			}
+		}
+	}
+
+	&__decoration {
+		position: absolute;
+		top: rem-calc(30);
+		left: 0;
+		z-index: -1;
+		width: 90%;
+		max-width: rem-calc(420);
+
+		@include media('>phone-small') {
+			width: 60%;
+		}
+
+		@include media('>phone') {
+			width: 40%;
+		}
+
+		@include media('>tablet') {
+			top: auto;
+			bottom: rem-calc(140);
+			left: rem-calc(50);
+			width: 80%;
+		}
+
+		@include media('>desktop-medium') {
+			bottom: rem-calc(150);
+			left: rem-calc(75);
+			max-width: none;
+		}
+
+		@include media('>desktop-large') {
+			bottom: rem-calc(170);
+			left: rem-calc(95);
+		}
+
+		&-image {
+			display: block;
+			width: 100%;
+		}
+	}
+
+	&__title {
+		@extend %section-heading__title;
+
+		position: relative;
+		left: -2px;
+
+		@include media('>tablet') {
+			margin-bottom: 4px;
+		}
+	}
+
+	&__slider {
+		width: 170vw;
+
+		@include media('>600px') {
+			width: 135vw;
+		}
+
+		@include media('>tablet') {
+			float: right;
+			width: 95vw;
+			max-width: rem-calc(1850);
+		}
+
+		@include media('>desktop-small') {
+			position: relative;
+		}
+
+		.owl-carousel {
+			.owl-stage {
+				@include media('>=tablet') {
+					display: flex;
+					align-items: stretch;
+					align-content: stretch;
+				}
+			}
+
+			.owl-item {
+				@include media('>=tablet') {
+					display: flex;
+					align-content: stretch;
+					align-items: stretch;
+					flex-direction: column;
+				}
+			}
+		}
+	}
+
+	.slider {
+		&__item {
+			display: block;
+			direction: ltr;
+			text-align: left;
+			padding: rem-calc(8) rem-calc(12) rem-calc(8) rem-calc(8);
+
+			@include media('>tablet') {
+				padding-right: rem-calc(50);
+				padding-left: rem-calc(40);
+				height: 100%;
+			}
+
+			@include media('>desktop-small') {
+				padding: rem-calc(8) rem-calc(50) rem-calc(14) rem-calc(40);
+			}
+
+			@include media('>desktop-medium') {
+				padding-right: rem-calc(60);
+			}
+
+			@include media('>desktop-xlarge') {
+				padding: 8px;
+				padding-right: rem-calc(60);
+			}
+		}
+
+		.item {
+			&__decoration {
+				display: none;
+				pointer-events: none;
+				z-index: 1;
+
+				@include media('>tablet') {
+					position: absolute;
+					top: rem-calc(20);
+					left: rem-calc(40);
+					display: block;
+					width: rem-calc(100);
+				}
+
+				@include media('>desktop-small') {
+					top: rem-calc(30);
+					left: rem-calc(60);
+					width: rem-calc(130);
+				}
+
+				@include media('>desktop-medium') {
+					top: rem-calc(40);
+					left: rem-calc(90);
+					width: rem-calc(160);
+				}
+
+				@include media('>desktop-large') {
+					width: rem-calc(196);
+				}
+
+				&-image {
+					display: block;
+					width: 100%;
+				}
+			}
+
+			&__wrapper {
+				position: relative;
+				padding: rem-calc(14);
+				padding-top: rem-calc(20);
+				background: white;
+				border-radius: 6px;
+				box-shadow: 0 5px 7px -3px fade-out(black, 0.9);
+
+				@include media('>tablet') {
+					padding: rem-calc(80) rem-calc(80) rem-calc(30) rem-calc(20);
+					height: 100%;
+				}
+
+				@include media('>desktop-small') {
+					padding: rem-calc(90) rem-calc(100) rem-calc(40) rem-calc(40);
+					box-shadow: 0 6px 10px -4px fade-out(black, 0.9);
+				}
+
+				@include media('>desktop-medium') {
+					padding: rem-calc(120) rem-calc(140) rem-calc(80) rem-calc(50);
+				}
+
+				@include media('>desktop-large') {
+					padding-right: rem-calc(150);
+				}
+			}
+
+			&__content {
+				display: flex;
+			}
+
+			&__picture {
+				position: relative;
+				flex-shrink: 0;
+				overflow: hidden;
+				width: rem-calc(60);
+				height: rem-calc(60);
+				margin-right: rem-calc(18);
+				border-radius: 4px;
+
+				@include media('>600px') {
+					width: rem-calc(50);
+					height: rem-calc(50);
+				}
+
+				@include media('>tablet') {
+					position: absolute;
+					bottom: rem-calc(30);
+					right: rem-calc(-50);
+					width: rem-calc(110);
+					height: rem-calc(110);
+					margin: 0;
+					border-radius: 6px;
+					box-shadow: 0 4px 10px fade-out(black, 0.9);
+				}
+
+				@include media('>desktop-small') {
+					bottom: rem-calc(40);
+					border-radius: 8px;
+				}
+
+				@include media('>desktop-medium') {
+					width: rem-calc(160);
+					height: rem-calc(160);
+					bottom: rem-calc(80);
+				}
+
+				@include media('>desktop-large') {
+					width: rem-calc(180);
+					height: rem-calc(180);
+				}
+			}
+
+			&__image {
+				@extend %image__cover;
+			}
+
+			&__text {
+				font-family: $font-mreaves;
+				font-size: rem-calc(14);
+				line-height: 1.4;
+				color: black;
+
+				@include media('>phone-small') {
+					font-size: rem-calc(16);
+				}
+
+				@include media('>phone-small') {
+					position: relative;
+					top: -4px;
+					font-size: rem-calc(18);
+				}
+
+				@include media('>tablet') {
+					position: static;
+					font-size: rem-calc(20);
+					line-height: 1.2;
+				}
+
+				@include media('>desktop-small') {
+					font-size: rem-calc(24);
+					line-height: 1.4;
+				}
+
+				@include media('>desktop-medium') {
+					font-size: rem-calc(32);
+					line-height: 1.2;
+				}
+
+				@include media('>desktop-large') {
+					font-size: rem-calc(40);
+				}
+			}
+
+			&__meta {
+				display: flex;
+				align-items: center;
+				margin-top: rem-calc(18);
+
+				@include media('>tablet') {
+					margin-top: rem-calc(24);
+				}
+
+				@include media('>desktop-small') {
+					position: relative;
+					top: 6px;
+					margin-top: rem-calc(32);
+				}
+
+				@include media('>desktop-medium') {
+					margin-top: rem-calc(56);
+				}
+
+				@include media('>desktop-large') {
+					margin-top: rem-calc(80);
+				}
+
+				&-info {
+					padding-left: rem-calc(14);
+					font-family: $font-mreaves;
+					text-transform: uppercase;
+					color: $color-gray;
+
+					@include media('>desktop-medium') {
+						padding-left: rem-calc(20);
+					}
+				}
+			}
+
+			&__company-logo {
+				display: block;
+				width: rem-calc(37);
+
+				@include media('>tablet') {
+					width: rem-calc(48);
+				}
+			}
+
+			&__author-name {
+				font-size: rem-calc(12);
+				font-weight: bold;
+				margin-bottom: 4px;
+
+				@include media('>tablet') {
+					font-size: rem-calc(14);
+				}
+
+				@include media('>desktop-small') {
+					font-size: rem-calc(16);
+				}
+
+				@include media('>desktop-medium') {
+					font-size: rem-calc(18);
+				}
+			}
+
+			&__author-role {
+				font-size: 10px;
+
+				@include media('>tablet') {
+					font-size: rem-calc(12);
+				}
+
+				@include media('>desktop-small') {
+					font-size: rem-calc(16);
+				}
+
+				@include media('>desktop-medium') {
+					font-size: rem-calc(18);
+				}
+			}
+		}
+
+		&__controls {
+			display: flex;
+			align-items: center;
+			margin-top: rem-calc(14);
+			padding: 0 rem-calc(12);
+
+			@include media('>tablet') {
+				justify-content: flex-end;
+				margin-top: rem-calc(20);
+				padding-right: rem-calc(52);
+				padding-left: 0;
+			}
+
+			@include media('>desktop-small') {
+				position: absolute;
+				right: rem-calc(130);
+				bottom: rem-calc(50);
+				z-index: 2;
+				margin: 0;
+				padding: 0;
+			}
+
+			@include media('>desktop-medium') {
+				right: rem-calc(240);
+				bottom: rem-calc(90);
+			}
+
+			@include media('>desktop-large') {
+				right: rem-calc(310);
+			}
+		}
+
+		&__arrow {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			height: rem-calc(30);
+			padding: rem-calc(10);
+			box-sizing: content-box;
+
+			@include media('>desktop-small') {
+				height: rem-calc(22);
+			}
+
+			@include media('>desktop-medium') {
+				height: rem-calc(24);
+			}
+
+			@include media('>desktop-large') {
+				height: rem-calc(28);
+			}
+
+			svg {
+				display: block;
+				width: rem-calc(18);
+				fill: $color-primary;
+
+				@include media('>desktop-small') {
+					width: rem-calc(22);
+				}
+
+				@include media('>desktop-medium') {
+					width: rem-calc(24);
+				}
+
+				@include media('>desktop-large') {
+					width: rem-calc(28);
+				}
+			}
+		}
+
+		&__indicator {
+			position: relative;
+			top: 1px;
+			display: flex;
+			align-items: center;
+			margin: 0 rem-calc(20);
+			font-family: $font-mreaves;
+			font-size: rem-calc(12);
+			font-variant-numeric: tabular-nums;
+			font-weight: bold;
+
+			@include media('>tablet') {
+				font-size: rem-calc(14);
+			}
+
+			@include media('>desktop-small') {
+				font-size: rem-calc(16);
+			}
+
+			@include media('>desktop-medium') {
+				font-size: rem-calc(18);
+			}
+
+			@include media('>desktop-large') {
+				font-size: rem-calc(20);
+			}
+		}
+	}
+}

@@ -1,0 +1,46 @@
+<section id="users" class="users">
+	<div class="users__line users__line--1">
+		{% include 'shared/media.twig' with {
+			source: theme.link ~ '/src/assets/img/prod/pages/pricing/users-line-1.svg',
+			alt: 'Users decoration 1',
+			class: 'users__line-image',
+		}%}
+		<span class="users__line-circle"></span>
+	</div>
+
+	<div class="users__line users__line--2">
+		{% include 'shared/media.twig' with {
+			source: theme.link ~ '/src/assets/img/prod/pages/pricing/users-line-2.svg',
+			alt: 'Users decoration 2',
+			class: 'users__line-image',
+		}%}
+		<span class="users__line-circle"></span>
+	</div>
+
+	<div class="users__wrapper">
+		<div class="users__box">
+			<div class="users__decoration">
+				{% include 'shared/media.twig' with {
+					source: theme.link ~ '/src/assets/img/prod/pages/pricing/users-decoration.png',
+					alt: 'bulb',
+					class: 'users__decoration-image',
+				}%}
+			</div>
+
+			<div class="users__box-content">
+				<div class="users__logo">
+					{% include 'shared/media.twig' with {
+						source: theme.link ~ '/src/assets/img/prod/pages/pricing/users-logo.png',
+						alt: 'bulb',
+						class: 'users__logo-image',
+					}%}
+				</div>
+
+				<h2 class="users__title">{{ post.get_field('callout_title') }}</h2>
+				<div class="users__text">
+					{{ post.get_field('callout_content') }}
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

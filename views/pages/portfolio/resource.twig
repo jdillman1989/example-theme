@@ -1,0 +1,46 @@
+<section id="resource" class="resource">
+	<div class="resource__wrapper">
+
+		<div class="resource__col resource__col--one">
+			<div class="resource__col-wrapper">
+				<picture class="resource__featured--image">
+					{% include 'shared/media.twig' with {
+						source: post.get_field('resource_info_image').url,
+						alt: post.get_field('resource_info_image').alt
+					}%}
+				</picture>
+			</div>
+		</div>
+
+		<div class="resource__col resource__col--two">
+			<div class="resource__col-wrapper">
+				{% if ( post.get_field('resource_info_text_decoration') ) %}
+					<figure class="resource__decoration">
+						{% include 'shared/media.twig' with {
+							source: Image(post.get_field('resource_info_text_decoration')).src,
+							alt: 'bulb',
+							class: 'resource__decoration--img',
+						}%}
+					</figure>
+				{% endif %}
+				<h2>{{ post.get_field('resource_info_title') }}</h2>
+				<div class="resource__col--two__divider">
+					<div class="resource__col--two__left">
+						{{ post.get_field('resource_info_left_content') }}
+						{% include 'shared/button.twig' with {
+							tagName: 'a',
+							variation: 'simple',
+							size: 'large',
+							style: 'dark-primary',
+							href: post.get_field('resource_info_left_button').url,
+							label: post.get_field('resource_info_left_button').title
+						}%}
+					</div>
+					<div class="resource__col--two__right">
+						{{ post.get_field('resource_info_right_content') }}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

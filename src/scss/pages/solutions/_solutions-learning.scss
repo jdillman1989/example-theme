@@ -1,0 +1,218 @@
+.page--solutions .learning {
+	position: relative;
+
+	&__wrapper {
+		max-width: rem-calc(1920);
+		margin: 0 auto;
+
+		@include media('>=phone') {
+			position: relative;
+			display: flex;
+			align-items: center;
+			justify-content: flex-end;
+		}
+	}
+
+	&__content {
+		padding: rem-calc(76) rem-calc(10) rem-calc(150) rem-calc(10);
+		background: linear-gradient(to right top, $color-secondary, $color-primary);
+
+		@include media('>=phone') {
+			display: flex;
+			justify-content: flex-end;
+			width: 73%;
+			padding: rem-calc(76) rem-calc(10) rem-calc(100) rem-calc(10);
+			background: linear-gradient(to right top, $color-primary, $color-secondary);
+			border-radius: 11px 0 0 0;
+			order: 2;
+		}
+
+		@include media('>=tablet') {
+			padding: rem-calc(76) rem-calc(10) rem-calc(150) rem-calc(10);
+		}
+
+		@include media('>=desktop-large') {
+			padding: rem-calc(200) 0;
+		}
+
+		@include media('>=1920px') {
+			background:transparent;
+			position: relative;
+		}
+
+		&::before {
+			@include media('>=1920px') {
+				content: '';
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 90vw;
+				height: 100%;
+				border-top-left-radius: 11px;
+				background: linear-gradient(to right top, $color-primary, $color-secondary);
+			}
+		}
+
+		&--wrapper {
+			position: relative;
+
+			@include media('>=phone') {
+				width: 50%;
+				max-width: 50%;
+				margin: 0 10%;
+			}
+
+			p {
+				@extend %section-body__copy;
+
+				margin-bottom: rem-calc(30);
+
+				&:last-of-type {
+					margin-bottom: rem-calc(25);
+				}
+			}
+
+			.btn--style-dark-primary.btn--var-simple .btn__icon svg {
+				fill: black;
+			}
+		}
+
+		&-header {
+			margin-bottom: rem-calc(30);
+		}
+
+		&-title {
+			@extend %section-heading__title;
+
+			margin-bottom: rem-calc(30);
+			font-size: rem-calc(32);
+			letter-spacing: -1.31px;
+
+			@include media('>=tablet') {
+				font-size: rem-calc(38);
+			}
+
+			@include media('>=desktop-small') {
+				font-size: rem-calc(46);
+			}
+
+			@include media('>=desktop-medium') {
+				font-size: rem-calc(56);
+			}
+
+			@include media('>=desktop-large') {
+				font-size: rem-calc(80);
+				letter-spacing: -1.33px;
+			}
+		}
+
+		&-subtitle {
+			font-family: $font-mreaves;
+			font-size: rem-calc(22);
+			line-height: 1.6;
+
+			@include media('>=tablet') {
+				font-size: rem-calc(24);
+			}
+
+			@include media('>=desktop-small') {
+				font-size: rem-calc(26);
+			}
+
+			@include media('>=desktop-medium') {
+				font-size: rem-calc(30);
+			}
+
+			@include media('>=desktop-large') {
+				font-size: rem-calc(34);
+				letter-spacing: -1.31px;
+			}
+		}
+	}
+
+	&__decoration {
+		@extend %media__picture;
+		@include ratio(850, 160);
+
+		position: absolute;
+		top: rem-calc(30);
+		left: rem-calc(-15);
+		width: 100%;
+		max-height: rem-calc(75);
+
+		@include media('>=phone') {
+			top: rem-calc(30);
+			left: 52%;
+			width: 100%;
+			max-width: none;
+			max-height: rem-calc(80);
+		}
+
+		@include media('>=desktop-medium') {
+			max-height: rem-calc(90);
+		}
+
+		@include media('>=1799px') {
+			max-height: rem-calc(150);
+		}
+
+		@include media('>=desktop-large') {
+			top: rem-calc(100);
+			left: 35%;
+		}
+	}
+
+	.features__decoration--img {
+		@extend %media__picture-image--contain;
+
+		object-position: left center;
+	}
+
+
+	&__image {
+		position: relative;
+		top: rem-calc(-140);
+		z-index: 1;
+		height: 0;
+		padding: 0 rem-calc(10);
+		overflow: visible;
+
+		@include media('>=phone') {
+			position: absolute;
+			top: 50%;
+			right: 50%;
+			max-width: rem-calc(650);
+			height: auto;
+			transform: translateY(-50%);
+			overflow: hidden;
+			order: 1;
+		}
+
+		//&::before {
+		//	display: none;
+		//
+		//	@include media('>=phone') {
+		//		content: '';
+		//		position: absolute;
+		//		top: rem-calc(90);
+		//		left: -2%;
+		//		display: block;
+		//		width: rem-calc(250);
+		//		height: rem-calc(250);
+		//		background-image: url('../../src/assets/img/prod/general/plus-pattern.png');
+		//		background-size: rem-calc(250);
+		//	}
+		//
+		//	@include media('>=desktop-large') {
+		//		top: rem-calc(100);
+		//		left: -2%;
+		//	}
+		//}
+	}
+
+	&__featured-img {
+		position: relative;
+		width: 100%;
+		height: auto;
+	}
+}

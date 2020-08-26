@@ -1,0 +1,145 @@
+<footer id="footer" class="footer">
+	<div class="footer__decoration">
+		<span class="footer__decoration-col footer__decoration-col--1"></span>
+		<span class="footer__decoration-col footer__decoration-col--2"></span>
+		<span class="footer__decoration-col footer__decoration-col--3"></span>
+		<span class="footer__decoration-col footer__decoration-col--4"></span>
+		<span class="footer__decoration-col footer__decoration-col--5"></span>
+		<span class="footer__decoration-col footer__decoration-col--6"></span>
+	</div>
+
+	<div class="footer__content">
+		<div class="footer__wrapper">
+			<div class="footer__row footer__row--top top">
+				<div class="footer__col footer__col--newsletter newsletter">
+					<h2 class="newsletter__title">{{ options.left_title }}</h2>
+					{% include 'shared/button.twig' with {
+						href: options.left_button.url,
+						label: options.left_button.title,
+						size: 'large',
+						variation: 'simple',
+						style: 'dark-primary',
+					}%}
+				</div>
+
+				<div class="footer__col footer__col--logo logo">
+					<a
+						href="{{ site.url }}"
+						title="Go to the homepage"
+						class="logo__link">
+						{% include 'shared/media.twig' with {
+							source: theme.link ~ '/src/assets/img/prod/layout/header/logo.svg',
+							alt: 'bulb Digital Portfolios',
+							class: 'logo__image',
+						}%}
+					</a>
+				</div>
+
+				<div class="footer__col footer__col--nav nav">
+					<ul class="nav__list">
+						{% for item in secondary_navigation %}
+							<li class="nav__item">
+								<a
+									href="{{ item.link.url }}"
+									class="nav__item-link">
+									{{ item.link.title }}
+								</a>
+							</li>
+						{% endfor %}
+					</ul>
+				</div>
+			</div>
+
+			<div class="footer__row footer__row--middle middle accordion-section">
+				<div class="footer__middle-nav accordion">
+					{% for group in options['footer_menu_items'] %}
+						<div class="footer__middle-nav-item accordion__item item" data-index="{{ loop.index0 }}">
+							<button class="footer__middle-nav-button item__header-button">{{ group.nav_group_heading }}</button>
+							<div class="item__content">
+								<div class="item__content-wrapper">
+									<ul class="footer__middle-nav-list">
+										{% for nav_item in group.nav_group_items %}
+											<li class="footer__middle-nav-list-item">
+												<a href="{{ nav_item.link.url }}" target="{{ nav_item.link.target ?: '_self' }}"{{ nav_item.link.target ? ' rel="noopener noreferrer" ' }} class="footer__middle-nav-link">{{ nav_item.link.title }}</a>
+											</li>
+										{% endfor %}
+									</ul>
+								</div>
+							</div>
+						</div>
+					{% endfor %}
+				</div>
+			</div>
+
+			<div class="footer__row footer__row--bottom bottom">
+				<div class="footer__col footer__col--social social">
+					<ul class="social__list">
+						{% for social in social_links %}
+							<li class="social__item">
+								<a
+									href="{{ social.link.url }}"
+									title="{{ social.link.title }}"
+									rel="noopener noreferrer"
+									target="_blank"
+									class="social__link">
+									{% if social.social_icon %}
+										{% include 'shared/media.twig' with {
+											source: Image(social.social_icon).src,
+											alt: 'Bulb ' ~ social.link.title,
+											class: 'social__link-icon',
+										}%}
+									{% else %}
+										{{ social.link.title }}
+									{% endif %}
+								</a>
+							</li>
+						{% endfor %}
+					</ul>
+				</div>
+
+				<div class="footer__col--app-links app-links">
+					{% for item in options['footer_app_links'] %}
+						<a href="{{ item.app_link.url }}" target="{{ item.app_link.target ?: '_self' }}" {{ item.app_link.target ? 'rel="noopener noreferrer"'}} class="app-links__item" title="{{ item.app_link.title }}">
+							{% include 'shared/media.twig' with {
+								source: Image(item.app_image).src,
+								alt: Image(item.app_image).alt ?: item.app_link.title,
+								class: 'app-links__image',
+							}%}
+						</a>
+					{% endfor %}
+				</div>
+
+				<div class="footer__col footer__col--back-to-top back-to-top">
+					<button
+						id="back-to-top"
+						class="back-to-top__button"
+						onclick="$('html, body').animate({ scrollTop: 0 }, 500);">
+						<span class="back-to-top__icon-wrapper">
+							{% include 'icons/back-to-top-arrow.svg.twig' %}
+						</span>
+						<span class="back-to-top__text">Back to top</span>
+					</button>
+				</div>
+
+				<div class="footer__col footer__col--login login">
+					<a
+						href="{{ options.login_button.url }}"
+						class="login__button">
+						<span class="login__button-text">{{ options.login_button.title }}</span>
+						{% include 'shared/media.twig' with {
+							source: theme.link ~ '/src/assets/img/prod/layout/footer/login-icon.svg',
+							alt: options.login_button.title,
+							class: 'login__button-icon',
+						}%}
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="footer__copyright">
+		<div class="footer__wrapper">
+			<div class="copyright">Copyright &copy; {{ 'now'|date('Y') }} bulb. All rights reserved.</div>
+		</div>
+	</div>
+</footer>

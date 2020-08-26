@@ -1,0 +1,261 @@
+.page--solutions .hero {
+	position: relative;
+	padding-bottom: rem-calc(42);
+
+	@include media('>phone') {
+		display: flex;
+		padding-bottom: 0;
+		overflow: hidden;
+	}
+
+	&::after {
+		content: '';
+		position: absolute;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		width: 100%;
+		height: rem-calc(28);
+		margin: 0 auto;
+		background-image: url('../../src/assets/img/prod/general/plus-pattern.png');
+		background-size: rem-calc(190);
+
+		@include media('>phone') {
+			z-index: -1;
+		}
+	}
+
+	.video-button {
+		position: absolute;
+		right: auto;
+		left: 50%;
+		transform: translate(-50%, 0);
+	}
+
+	.decoration-hero-line {
+		display: none;
+
+		@include media('>phone') {
+			position: absolute;
+			right: -5%;
+			bottom: 0;
+			left: -5%;
+			z-index: 2;
+			display: block;
+			width: 110vw;
+			height: rem-calc(200);
+		}
+
+		@include media('>tablet') {
+			height: rem-calc(320);
+		}
+
+		@include media('>desktop-large') {
+			height: rem-calc(370);
+		}
+
+		@include media('>desktop-xlarge') {
+			bottom: 10%;
+			height: rem-calc(400);
+		}
+
+		svg {
+
+			@include media('>phone') {
+				width: 100%;
+				height: auto;
+			}
+		}
+	}
+
+	&__col-wrapper {
+		position: relative;
+		overflow: hidden;
+	}
+
+	&__col {
+
+		&--one {
+
+			@include media('>phone') {
+				display: flex;
+				align-items: center;
+				width: 70%;
+			}
+
+			.hero__col-wrapper {
+				padding: rem-calc(74) rem-calc(12) rem-calc(30);
+
+				@include media('>320px') {
+					padding-right: rem-calc(20);
+					padding-left: rem-calc(20);
+				}
+
+				@include media('>phone') {
+					padding: 0;
+				}
+
+			}
+		}
+
+		&--two {
+
+			@include media('>phone') {
+				position: relative;
+				width: 30%;
+				height: rem-calc(400);
+				background: linear-gradient(to right, $color-secondary, $color-primary);
+				border-radius: 11px 0 0 0;
+			}
+
+			@include media('>tablet') {
+				height: rem-calc(600);
+			}
+
+			@include media('>desktop-large') {
+				height: rem-calc(800);
+			}
+
+			&::after {
+				$desktop_size: 200;
+
+				display: none;
+
+				@include media('>phone') {
+					content: '';
+					position: absolute;
+					right: rem-calc(-($desktop_size / 2));
+					bottom: rem-calc(-($desktop_size / 2));
+					display: block;
+					width: rem-calc($desktop_size);
+					height: rem-calc($desktop_size);
+					border: 50px solid white;
+					border-radius: 400px;
+				}
+			}
+
+			.hero__col-wrapper {
+
+				@include media('>phone') {
+					position: absolute;
+					top: 50%;
+					right: 10%;
+					z-index: 3;
+					width: 55vw;
+					max-width: rem-calc(800);
+					padding: 50px;
+					transform: translateY(-50%);
+				}
+
+				@include media('>desktop-large') {
+					width: rem-calc(940);
+					max-width: none;
+				}
+
+				@include media('>desktop-xlarge') {
+					top: 50%;
+					right: auto;
+					left: -60%;
+				}
+
+				&::after {
+					display: none;
+
+					@include media('>phone') {
+						content: '';
+						position: absolute;
+						top: rem-calc(20);
+						right: rem-calc(20);
+						display: block;
+						width: rem-calc(200);
+						height: rem-calc(170);
+						background-image: url('../../src/assets/img/prod/general/white-plus-pattern.svg');
+						background-size: rem-calc(240);
+					}
+				}
+
+				&::before {
+					$desktop_size: 50;
+
+					display: none;
+
+					@include media('>phone') {
+						content: '';
+						position: absolute;
+						top: 50%;
+						left: rem-calc($desktop_size / 4);
+						display: block;
+						width: rem-calc($desktop_size);
+						height: rem-calc($desktop_size);
+						transform: translateY(rem-calc(-($desktop_size / 2)));
+						border: 10px solid $color-accent-2;
+						border-radius: 300px;
+					}
+				}
+			}
+		}
+	}
+
+	&__decoration {
+		position: absolute;
+		top: rem-calc(-30);
+		left: rem-calc(-27);
+		width: 110%;
+		max-width: rem-calc(460);
+
+		@include media('>phone') {
+			top: 0;
+			left: rem-calc(-26);
+			width: 150%;
+			max-width: rem-calc(800);
+		}
+
+		&--img {
+			width: 100%;
+			height: auto;
+		}
+	}
+
+	&__heading {
+		position: relative;
+
+		@include media('>phone') {
+			width: 50%;
+			padding: rem-calc(80) 0 rem-calc(80) 5%;
+		}
+
+		@include media('>desktop-large') {
+			width: 90%;
+			padding: rem-calc(90) 25% rem-calc(90) 5%;
+		}
+	}
+
+	&__title {
+		@extend %section-heading__title;
+		@extend %section-heading__title--dark;
+
+		position: relative;
+	}
+
+	&__video {
+		position: relative;
+		z-index: 1;
+	}
+
+	&__featured-image {
+		display: block;
+		width: 100%;
+	}
+
+	&__featured-img {
+		position: relative;
+		left: rem-calc(-5);
+		display: block;
+		width: 150%;
+
+		@include media('>phone') {
+			left: auto;
+			width: 100%;
+		}
+	}
+}

@@ -1,0 +1,5 @@
+.page-template-default:not(.elementor-page) {
+	.default {
+		@extend %default__base;
+	}
+}

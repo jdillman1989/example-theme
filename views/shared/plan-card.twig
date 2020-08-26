@@ -1,0 +1,87 @@
+{% set layout = layout is defined ? layout : 'dynamic' %}
+
+<div class="plan-card plan-card--layout-{{ layout }} {{ class }} {{ selected_class }}">
+	<div class="plan-card__wrapper">
+		<div class="plan-card__content">
+			<picture class="plan-card__featured-picture">
+				{% include 'shared/media.twig' with {
+					source: Image(data.pricing_background_image).src,
+					alt: Image(data.pricing_background_image).alt,
+					class: 'plan-card__featured-image',
+				}%}
+			</picture>
+
+			<h3 class="plan-card__name show-for-sr">{{ data.pricing_plan_title }}</h3>
+
+			<picture class="plan-card__logo-picture">
+				{% include 'shared/media.twig' with {
+					source: Image(data.pricing_plan_logo).src,
+					alt: Image(data.pricing_plan_logo).alt,
+					class: 'plan-card__logo-image',
+				}%}
+			</picture>
+
+			{% if data.plan_pricing %}
+				{% set pricing_data = data.plan_pricing[0] %}
+				<div class="plan-card__price">
+					<div class="plan-card__price-value">
+						{% if pricing_data.currency_sign %}
+							<small class="small small--prepend">{{ pricing_data.currency_sign }}</small>
+						{% endif %}
+						<span class="number">{{ pricing_data.cost }}</span>
+						{% if pricing_data.billing_frequency %}
+							<small class="small small--append">/{{ pricing_data.billing_frequency }}</small>
+						{% endif %}
+					</div>
+
+					{% if pricing_data.side_note %}
+						<div class="plan-card__price-info">{{ pricing_data.side_note }}</div>
+					{% endif %}
+					{% if pricing_data.bottom_note %}
+						<div class="plan-card__bottom-info">{{ pricing_data.bottom_note }}</div>
+					{% endif %}
+				</div>
+			{% endif %}
+
+
+			<div class="plan-card__info info">
+				<ul class="info__list">
+					{% for info in data.pricing_plan_features %}
+						<li class="info__item">
+							{{ info.feature_description }}
+						</li>
+					{% endfor %}
+				</ul>
+			</div>
+
+			<div class="plan-card__description">{{ data.pricing_plan_description }}</div>
+		</div>
+
+		<div class="plan-card__best-uses best-uses">
+			<ul class="best-uses__list">
+				<li class="best-uses__item best-uses__item--label">Best used for:</li>
+				{% for use_case in data.pricing_usage %}
+					<li class="best-uses__item best-uses__item--{{ use_case.value }}">{{ use_case.label }}</li>
+				{% endfor %}
+			</ul>
+		</div>
+	</div>
+
+	<div class="plan-card__cta">
+		{% include 'shared/button.twig' with {
+			href: data.pricing_plan_button.url,
+			label: data.pricing_plan_button.title,
+			style: 'light-primary',
+			class: 'plan-card__cta-button plan-card__cta-button--mobile',
+		}%}
+
+		{% include 'shared/button.twig' with {
+			href: data.pricing_plan_button.url,
+			label: data.pricing_plan_button.title,
+			variation: 'simple',
+			size: 'large',
+			style: 'dark',
+			class: 'plan-card__cta-button plan-card__cta-button--desktop',
+		}%}
+	</div>
+</div>

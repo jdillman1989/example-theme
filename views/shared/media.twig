@@ -1,0 +1,12 @@
+{% set resizeWidth = resize is iterable ? resize[0] : resize %}
+{% set resizeHeight = resize is iterable ? resize[1] : null %}
+
+<img
+	alt="{{ alt }}"
+	class="{{ class }} lazyload"
+	{{ animation ? 'data-animation="' ~ animation ~ '"' }}
+	{{ animationDelay ? 'data-animation-delay="' ~ animationDelay ~ '"' }}
+	{{ animationTarget ? 'data-animation-target="' ~ animationTarget ~ '"' }}
+	data-src="{{ source }}"
+	{{ data_attr }}
+/>

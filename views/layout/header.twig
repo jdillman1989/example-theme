@@ -1,0 +1,83 @@
+<a class="skip-link screen-reader-text" href="#main-content">{{ _e( 'Skip to content') }}</a>
+
+<header id="header" class="header">
+	<div class="header__wrapper">
+		<div class="header__logo">
+			<a
+				href="{{ site.url }}"
+				title="Go to the home page"
+				class="header__logo-link">
+				<picture class="header__logo-picture">
+					<source data-srcset="{{ theme.link ~ '/src/assets/img/prod/layout/header/logo-white.svg' }}" media="(max-width: 767px)" class="lazyload">
+					<img data-srcset="{{ theme.link ~ '/src/assets/img/prod/layout/header/logo.svg' }}" alt="bulb Digital Portfolios" class="header__logo-image lazyload">
+				</picture>
+			</a>
+		</div>
+
+		<div class="header__mobile-nav mobile-nav">
+			<ul class="mobile-nav__list">
+				<li class="mobile-nav__item mobile-nav__item--menu-toggler">
+					<button
+						title="Open menu"
+						aria-label="Open menu"
+						id="menu-toggler"
+						class="mobile-nav__button menu-toggler">
+						Menu
+					</button>
+				</li>
+			</ul>
+		</div>
+
+		<div class="header__nav nav">
+			<ul class="nav__list">
+
+				{% for item in main_navigation %}
+					<li
+						class="nav__item {{ item.submenu ? 'nav__item--has-megamenu' }}"
+						data-index="{{ loop.index0 }}">
+						<a
+							href="{{ item.top.url }}"
+							class="nav__item-link">
+							{{ item.top.title }}
+						</a>
+					</li>
+				{% endfor %}
+
+			</ul>
+		</div>
+
+		<div class="header__actions actions">
+			<ul class="actions__list">
+				<li class="actions__item actions__item--login">
+					<a
+						href="{{ options.login_button.url }}"
+						class="actions__button">
+						<span class="actions__button-text">{{ options.login_button.title }}</span>
+						{% include 'shared/media.twig' with {
+							source: theme.link ~ '/src/assets/img/prod/layout/header/action-login-icon.svg',
+							alt: options.login_button.title,
+							class: 'actions__button-icon',
+						}%}
+					</a>
+				</li>
+
+				<li class="actions__item actions__item--signup">
+					{% include 'shared/button.twig' with {
+						href: options.signup_button.url,
+						label: options.signup_button.title,
+					}%}
+				</li>
+			</ul>
+		</div>
+	</div>
+	{% for item in main_navigation %}
+		{% if item.submenu %}
+			{% include 'layout/megamenu.twig' with {
+				index: loop.index0,
+				data: item,
+			}%}
+		{% endif %}
+	{% endfor %}
+</header>
+
+{% include 'layout/mobile-menu.twig' %}

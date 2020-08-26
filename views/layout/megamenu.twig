@@ -1,0 +1,72 @@
+<div class="megamenu" data-index="{{ index }}">
+	{% include 'shared/dec-circle.twig' %}
+
+	<div class="megamenu__decoration">
+		{% include 'shared/media.twig' with {
+			source: data.decoration.url,
+			alt: data.top.title,
+			class: 'megamenu__decoration-image',
+		}%}
+	</div>
+
+	<div class="megamenu__scroll-wrapper">
+		<div class="megamenu__wrapper">
+			<div class="megamenu__col megamenu__col--left">
+				<nav class="megamenu__nav nav">
+					<ul class="nav__list">
+
+						{% for item in data.submenu %}
+							<li
+								class="nav__item {{ loop.index0 == 0 ? 'nav__item--active' }}"
+								data-index="{{ loop.index0 }}">
+								<a
+									href="{{ item.sub_link.url }}"
+									{{ item.sub_link.target ? ' target="_blank" rel="noopener noreferrer"' }}
+									class="nav__item-link">
+									<span class="nav__item-text">{{ item.sub_link.title }}</span>
+									<img src="{{ theme.link ~ '/src/assets/img/prod/general/link-out-arrow.svg' }}" alt="Learn More" class="nav__item-icon">
+								</a>
+							</li>
+						{% endfor %}
+
+					</ul>
+				</nav>
+			</div>
+
+			<div class="megamenu__col megamenu__col--right">
+				<div class="megamenu__tabs tabs">
+
+					{% for item in data.submenu %}
+						<div
+							class="tabs__tab tab {{ loop.index0 == 0 ? 'tabs__tab--active' }}"
+							data-index="{{ loop.index0 }}">
+							<div class="tab__wrapper">
+								<div class="tab__col tab__col--left{{ not item.image.url ? ' tab__col--no-image' }}">
+									<h2 class="tab__title">{{ item.sub_link.title }}</h2>
+									<div class="tab__description">{{ item.description }}</div>
+									<div class="tab__cta">
+										{% include 'shared/button.twig' with {
+											href: item.sub_link.url,
+											label: 'Learn More',
+											style: 'primary-border',
+											external: item.sub_link.target
+										}%}
+									</div>
+								</div>
+
+								{% if item.image.url %}
+								<div class="tab__col tab__col--right">
+									<picture class="tab__picture">
+										<img src="{{ item.image.url }}" alt="{{ item.label }}" class="tab__image">
+									</picture>
+								</div>
+								{% endif %}
+							</div>
+						</div>
+					{% endfor %}
+
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

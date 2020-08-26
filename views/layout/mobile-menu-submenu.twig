@@ -1,0 +1,51 @@
+<div class="mobile-menu__submenu submenu" data-index="{{ index }}">
+	<div class="submenu__topbar">
+		<button
+			title="Go back to the menu"
+			class="submenu__back">
+			{% include 'shared/media.twig' with {
+				source: theme.link ~ '/src/assets/img/prod/layout/mobile-menu/submenu-back-icon.svg',
+				alt: 'Go back',
+				class: 'submenu__back-icon',
+			}%}
+			<span class="submenu__back-text">Back</span>
+		</button>
+
+		<button
+			title="Close the menu"
+			aria-label="Close the menu"
+			class="submenu__close">
+		</button>
+	</div>
+
+	<div class="submenu__content">
+		<div class="submenu__decoration">
+			{% include 'shared/media.twig' with {
+				source: data.decoration.url,
+				alt: data.top.title,
+				class: 'submenu__decoration-image',
+			}%}
+		</div>
+
+		<div class="submenu__content-wrapper">
+			<h2 class="submenu__title">
+				<span class="submenu__title-text">{{ data.top.title }}</span>
+			</h2>
+
+			<div class="submenu__items items">
+				<ul class="items__list">
+					{% for item in data.submenu %}
+						<li class="items__item">
+							<a
+								href="{{ item.sub_link.url }}"
+								{{ item.sub_link.target ? ' target="_blank" rel="noopener noreferrer"' }}
+								class="items__item-link">
+								{{ item.sub_link.title }}
+							</a>
+						</li>
+					{% endfor %}
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>

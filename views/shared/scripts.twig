@@ -1,0 +1,8 @@
+<script>
+	window.VARS = {
+		THEME: '{{ site.theme.link }}',
+		URL: '{{ site.link }}'
+	}
+</script>
+
+{{ function('render_script', 'scripts', '/dist/js/index.js') }}

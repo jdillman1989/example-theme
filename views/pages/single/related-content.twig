@@ -1,0 +1,87 @@
+<section class="related-content">
+	<div class="related-content__wrapper">
+		<div class="related-content__heading">
+			<div class="related-content__heading-top">
+				<div class="related-content__decoration">
+					{% include 'shared/media.twig' with {
+						source: theme.link ~ '/src/assets/img/dev/pages/single/related-content.png',
+						alt: '',
+						class: 'related-content__decoration--img lazyload',
+					}%}
+				</div>
+				<h2 class="related-content__title">{{ post.get_field('related_content_header') }}</h2>
+				<nav class="related-content__nav">
+					<button
+							aria-label="Previous article"
+							class="related-content__arrow related-content__arrow--prev"
+							data-direction="prev">
+						<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="27px"
+							 height="23px" viewBox="0 0 27 23">
+							<path fill-rule="evenodd"
+								  d="M27.000,10.062 L6.412,10.062 L15.863,2.013 L13.500,-0.000 L0.000,11.500 L13.500,23.000 L15.863,20.987 L6.412,12.938 L27.000,12.938 L27.000,10.062 Z"></path>
+						</svg>
+					</button>
+					<button
+							aria-label="Next article"
+							class="related-content__arrow related-content__arrow--next"
+							data-direction="next">
+						<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="27px"
+							 height="23px" viewBox="0 0 27 23">
+							<path fill-rule="evenodd"
+								  d="M0.000,10.062 L20.588,10.062 L11.137,2.013 L13.500,-0.000 L27.000,11.500 L13.500,23.000 L11.137,20.987 L20.588,12.938 L0.000,12.938 L0.000,10.062 Z"></path>
+						</svg>
+					</button>
+				</nav>
+			</div>
+		</div>
+
+		<div class="related-content__slider slider mobile-only-slider">
+			<div class="slider__items">
+				{% for post in related_content %}
+					{% set link = post.get_field('external_link') ? post.get_field('external_link') : post.link %}
+					{% set associated_types = post.terms('content-type') %}
+					{% set primary_type = post.get_field('primary_type') %}
+					<div class="slider__item item">
+						<picture class="item__picture">
+							<a
+								href="{{ link }}"
+								title="Learn More"
+								class="item__picture-link">
+								{% include 'shared/media.twig' with {
+									source: post.thumbnail ? post.thumbnail.src : '/wp-content/themes/bulb-app/src/assets/img/prod/general/blog-placeholder.jpg',
+									alt: post.thumbnail.alt ?: post.title,
+									class: 'item__image',
+								}%}
+							</a>
+						</picture>
+						<div class="item__info">
+							<h3 class="item__title">{{ post.title }}</h3>
+							{% if primary_type or associated_types[0] %}
+								<div class="item__category">
+									<a
+										href="{{ (primary_type) ? primary_type.link : associated_types[0].link }}"
+										class="item__category-link">
+										{{ (primary_type) ? primary_type.name : associated_types[0].name }}
+									</a>
+								</div>
+							{% endif %}
+						</div>
+						<div class="item__cta">
+							<a href="{{ link }}" class="btn btn--var-simple btn--size-large btn--style-dark-primary ">
+								<span class="btn__text">Learn More</span>
+								<span class="btn__icon">
+								<svg xmlns="http://www.w3.org/2000/svg"
+									 xmlns:xlink="http://www.w3.org/1999/xlink" width="22px"
+									 height="21px" viewBox="0 0 22 21">
+									<path fill-rule="evenodd"
+										  d="M3.071,20.972 L17.555,5.779 L16.772,18.489 L19.900,18.180 L21.020,0.022 L3.143,1.789 L2.947,4.967 L15.461,3.730 L0.976,18.923 L3.071,20.972 Z"></path>
+								</svg>
+							</span>
+							</a>
+						</div>
+					</div>
+				{% endfor %}
+			</div>
+		</div>
+	</div>
+</section>

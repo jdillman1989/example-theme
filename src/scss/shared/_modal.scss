@@ -1,0 +1,111 @@
+.js-modal-hidden {
+	display: none;
+}
+
+.js-modal-content {
+	position: absolute;
+	top: 50%;
+	right: 0;
+	left: 0;
+	width: 90%;
+	max-width: rem-calc(1800);
+	padding-top: 56.25%; /* 16:9 Aspect Ratio (divide 9 by 16 = 0.5625) */
+	margin: 0 auto;
+	overflow: hidden;
+	transform: translateY(-50%);
+	pointer-events: none;
+
+	@include media('>1920px') {
+		padding-top: rem-calc(1080);
+	}
+
+	iframe {
+		position: absolute;
+		top: 0;
+		left: 0;
+		bottom: 0;
+		right: 0;
+		width: 100%;
+		height: 100%;
+		pointer-events: auto;
+	}
+}
+
+.modal {
+	display: none;
+
+	.is-modal-active & {
+		opacity: 1;
+		visibility: visible;
+	}
+
+	.modal-overlay & {
+		display: block;
+	}
+}
+
+.modal-overlay {
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	z-index: 99;
+	display: block;
+	width: 100%;
+	background-color: transparent;
+	transition: all .5s;
+	visibility: hidden;
+
+	&::before {
+		content: "";
+		position: absolute;
+		top: rem-calc(10);
+		left: rem-calc(10);
+		z-index: 2;
+		display: block;
+		width: rem-calc(15);
+		height: rem-calc(15);
+		color: white;
+		background: transparent url("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz48c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkxheWVyXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4IiB2aWV3Qm94PSIwIDAgMjQgMjQiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDI0IDI0OyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+PHN0eWxlIHR5cGU9InRleHQvY3NzIj4uc3Qwe2ZpbGw6I0ZGRkZGRjt9PC9zdHlsZT48cGF0aCBpZD0iY2xvc2UiIGNsYXNzPSJzdDAiIGQ9Ik0xMiw5LjJMMjEuMiwwTDI0LDIuOEwxNC44LDEybDkuMiw5LjJMMjEuMiwyNEwxMiwxNC44TDIuOCwyNEwwLDIxLjJMOS4yLDEyTDAsMi44TDIuOCwwTDEyLDkuMnoiLz48L3N2Zz4=") no-repeat center / contain; // X SVG Image
+		opacity: 0.75;
+		cursor: pointer;
+
+		@include media('>=phone') {
+			top: rem-calc(15);
+			left: rem-calc(15);
+			width: rem-calc(24);
+			height: rem-calc(24);
+		}
+	}
+
+	.is-modal-active & {
+		background-color: rgba(#000000, .8);
+		cursor: pointer;
+		visibility: visible;
+	}
+
+	.js-modal-hidden {
+		display: block;
+	}
+}
+
+// Basic Modal Styles
+.modal-basic {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: calc(100% - 100px);
+	max-width: 900px;
+	padding: 25px;
+	transform: translate(-50%, -50%);
+	background-color: #FFFFFF;
+	border-radius: 5px;
+
+	> :first-child {
+		margin-top: 0;
+	}
+
+	> :last-child {
+		margin-bottom: 0;
+	}
+}

@@ -1,0 +1,22 @@
+{% extends 'base.twig' %}
+
+{% set template = 'pricing' %}
+
+{% block content %}
+	<div id="pricing" class="page page--pricing">
+		{% include 'pages/pricing/hero.twig' %}
+		{% include 'pages/pricing/plans.twig' %}
+		{% include 'sections/faq.twig' with {
+			hasBG: false,
+		} %}
+		{% include 'pages/pricing/users.twig' %}
+		{% include 'sections/case-studies.twig' with {
+			hideHeadline: true,
+		}%}
+		{% include 'shared/resource-center.twig' %}
+		{% include 'pages/pricing/plans-cta.twig' %}
+		{% if (post.get_field('field_override_hide_contact_bar') != 'yes')  %}
+			{% include 'shared/contact-bar.twig' %}
+		{% endif %}
+	</div>
+{% endblock %}

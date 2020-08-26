@@ -1,0 +1,22 @@
+{% extends 'base.twig' %}
+
+{% set template = 'portfolio' %}
+
+{% block content %}
+	<div id="portfolio" class="page page--portfolio">
+		{% include 'pages/portfolio/hero.twig' %}
+		{% include 'pages/portfolio/benefits.twig' %}
+		{% include 'pages/portfolio/features.twig' %}
+		{% if (post.get_field('hide_ecosystem_chart') is not same as('yes')) %}
+			{% include 'pages/portfolio/ecosystem.twig' %}
+		{% endif %}
+		{% include 'pages/portfolio/resource.twig' %}
+		{% if (post.get_field('hide_remote_learning_section') is not same as('yes')) %}
+			{% include 'sections/remote-learning.twig' %}
+		{% endif %}
+		{% include 'sections/case-studies.twig' %}
+		{% if (post.get_field('field_override_hide_contact_bar') != 'yes')  %}
+			{% include 'shared/contact-bar.twig' %}
+		{% endif %}
+	</div>
+{% endblock %}

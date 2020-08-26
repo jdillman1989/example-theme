@@ -1,0 +1,52 @@
+<section id="hero" class="hero">
+	<div class="hero__wrapper">
+		<div class="hero__col hero__col--one">
+			<div class="hero__decoration">
+				{% include 'shared/media.twig' with {
+					source: theme.link ~ '/src/assets/img/dev/pages/home/hero-decoration.svg',
+					alt: 'bulb',
+					class: 'hero__decoration-image',
+				}%}
+			</div>
+
+			<header class="hero__heading">
+				<div class="hero__headline">{{ post.get_field('hero_top_label') }}</div>
+				<h1 class="hero__title">{{ post.get_field('hero_title') }}</h1>
+			</header>
+
+			<div class="hero__actions actions">
+				<ul class="actions__list">
+					<li class="actions__item">
+						{% include 'shared/button.twig' with {
+							href: post.get_field('hero_button_1').url,
+							label: post.get_field('hero_button_1').title,
+							size: 'large',
+							class: 'actions__item-button',
+						}%}
+					</li>
+
+					<li class="actions__item">
+						{% include 'shared/button.twig' with {
+							href: post.get_field('hero_button_2').url,
+							label: post.get_field('hero_button_2').title,
+							style: 'primary-border',
+							size: 'large',
+						}%}
+					</li>
+				</ul>
+			</div>
+		</div>
+
+		<div class="hero__col hero__col--two">
+			{% include 'shared/dec-circle.twig' %}
+
+			<picture class="hero__featured-picture">
+				{% include 'shared/media.twig' with {
+					source: post.get_field('hero_image').url,
+					alt: post.get_field('hero_image').alt,
+					class: 'hero__featured-image',
+				}%}
+			</picture>
+		</div>
+	</div>
+</section>

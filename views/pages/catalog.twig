@@ -1,0 +1,19 @@
+{% extends 'base.twig' %}
+
+{% set template = 'catalog' %}
+
+{% set featured_post = post.get_field('featured_post_selection') %}
+{% block content %}
+	<div id="catalog" class="page page--catalog">
+		{% if ( featured_post ) %}
+			{% include 'pages/catalog/hero.twig' with {
+				featured: Post(featured_post[0])
+			} %}
+		{% endif %}
+		{% if post.get_field('youtube_channel_link') %}
+			{% include 'pages/catalog/cta-insert.twig' %}
+		{% endif %}
+		{% include 'pages/catalog/archive.twig' %}
+		{% include 'shared/contact-bar.twig' %}
+	</div>
+{% endblock %}

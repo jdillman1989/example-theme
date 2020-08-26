@@ -1,0 +1,39 @@
+/**
+ *  Mixin ratio accepts a width and height and generates a pseudo
+ *  element that maintains the ratio of the dimensions provided.
+ */
+@mixin ratio ($width, $height) {
+	font-size: 0;
+
+	&:after {
+		content: '';
+		display: inline-block;
+		padding-top: $height / $width * 100%;
+		width: 100%;
+	}
+}
+
+/**
+ *  REM calculation of pixel values
+ */
+$rem-base: 16px;
+
+@function strip-unit($num) {
+	@return $num / ($num * 0 + 1);
+}
+
+@function convert-to-rem($value, $base-value: $rem-base)  {
+	$value: strip-unit($value) / strip-unit($base-value) * 1rem;
+	@if ($value == 0rem) { $value: 0; } // Turn 0rem into 0
+	@return $value;
+}
+
+@function rem-calc($values, $base-value: $rem-base) {
+	$max: length($values);
+	@if $max == 1 { @return convert-to-rem(nth($values, 1), $base-value); }
+	$remValues: ();
+	@for $i from 1 through $max {
+		$remValues: append($remValues, convert-to-rem(nth($values, $i), $base-value));
+	}
+	@return $remValues;
+}

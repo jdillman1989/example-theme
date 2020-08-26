@@ -1,0 +1,91 @@
+<section id="news" class="news">
+	<div class="news__bg-pattern"></div>
+
+	<div class="news__wrapper">
+		<div class="news__headline">{{ post.get_field('post_slider_vertical_label') }}</div>
+
+		<div class="news__heading">
+			<div class="news__heading-top">
+				<h2 class="news__title">{{ post.get_field('post_slider_title') }}</h2>
+
+				<nav id="news-nav" class="news__nav">
+					<button
+						aria-label="Previous Article"
+						class="news__arrow news__arrow--prev"
+						data-direction="prev">
+						{% include 'icons/slider-arrow.svg.twig' with {
+							direction: 'prev',
+						}%}
+					</button>
+
+					<button
+						aria-label="Next Article"
+						class="news__arrow news__arrow--next"
+						data-direction="next">
+						{% include 'icons/slider-arrow.svg.twig' with {
+							direction: 'next',
+						}%}
+					</button>
+				</nav>
+			</div>
+
+			<div class="news__heading-bottom">
+				{% include 'shared/button.twig' with {
+					href: post.get_field('post_slider_button').url,
+					label: post.get_field('post_slider_button').title,
+					variation: 'simple',
+					size: 'large',
+					style: 'dark-primary',
+				}%}
+			</div>
+		</div>
+
+		<div id="news-slider" class="news__slider slider">
+			<div class="slider__items owl-carousel">
+
+				{% for item in Post(post.get_field('post_slider_items')) %}
+					{% set link = item.get_field('external_link') ? item.get_field('external_link') : item.link %}
+					{% set associated_types = item.terms('content-type') %}
+					{% set primary_type = item.get_field('primary_type') %}
+					<div class="slider__item item">
+						<picture class="item__picture">
+							<a
+								href="{{ link }}"
+								title="Learn More"
+								class="item__picture-link">
+								{% include 'shared/media.twig' with {
+									source: item.thumbnail.src,
+									alt: item.thumbnail.alt ?: item.title,
+									class: 'item__image',
+								}%}
+							</a>
+						</picture>
+
+						<div class="item__info">
+							<h3 class="item__title">{{ item.title }}</h3>
+							{% if primary_type or associated_types[0] %}
+								<div class="item__category">
+									<a
+										href="{{ (primary_type) ? primary_type.link : associated_types[0].link }}"
+										class="item__category-link">
+										{{ (primary_type) ? primary_type.name : associated_types[0].name }}
+									</a>
+								</div>
+							{% endif %}
+						</div>
+
+						<div class="item__cta">
+							{% include 'shared/button.twig' with {
+								href: link,
+								label: 'Learn More',
+								variation: 'simple',
+								size: 'large',
+								style: 'dark-primary',
+							}%}
+						</div>
+					</div>
+				{% endfor %}
+			</div>
+		</div>
+	</div>
+</section>

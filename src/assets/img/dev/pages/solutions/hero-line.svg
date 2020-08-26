@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="2057px" height="341px" viewBox="0 0 2057 341" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>hero-line</title>
+    <defs>
+        <filter x="-2.2%" y="-15.8%" width="104.4%" height="131.6%" filterUnits="objectBoundingBox" id="filter-1">
+            <feMorphology radius="3" operator="dilate" in="SourceAlpha" result="shadowSpreadOuter1"></feMorphology>
+            <feOffset dx="0" dy="17" in="shadowSpreadOuter1" result="shadowOffsetOuter1"></feOffset>
+            <feMorphology radius="3" operator="erode" in="SourceAlpha" result="shadowInner"></feMorphology>
+            <feOffset dx="0" dy="17" in="shadowInner" result="shadowInner"></feOffset>
+            <feComposite in="shadowOffsetOuter1" in2="shadowInner" operator="out" result="shadowOffsetOuter1"></feComposite>
+            <feGaussianBlur stdDeviation="2" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.0189302885 0" type="matrix" in="shadowBlurOuter1" result="shadowMatrixOuter1"></feColorMatrix>
+            <feMerge>
+                <feMergeNode in="shadowMatrixOuter1"></feMergeNode>
+                <feMergeNode in="SourceGraphic"></feMergeNode>
+            </feMerge>
+        </filter>
+    </defs>
+    <g id="Desktop" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="hero-line" filter="url(#filter-1)" transform="translate(33.000000, 33.000000)" stroke="#000000" stroke-width="6">
+            <path d="M-2.27373675e-13,215.890143 C159.799636,256.401068 297.817503,276.360312 410.559644,274.456165 C554.489801,272.025271 669.326039,258.006644 755.068359,232.400283 C789.14373,221.302256 815.102123,211.231481 832.943539,202.187957 C877.251949,179.728745 1029.96731,87.1138566 1169.62833,34.5843897 C1237.23777,9.1550494 1301.92036,1.70530257e-13 1350.47351,1.70530257e-13 C1471.4527,1.70530257e-13 1808.38819,31.5820811 1990.0428,123.736112"></path>
+        </g>
+    </g>
+</svg>

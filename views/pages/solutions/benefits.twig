@@ -1,0 +1,24 @@
+<section id="benefits" class="benefits">
+    <div class="benefits__wrapper">
+        <div class="benefits__col benefits__col--one">
+			{% for item in post.get_field('benefits_list') %}
+				<div class="benefits__item">
+					{% include 'shared/media.twig' with {
+						source: theme.link ~ '/src/assets/img/dev/pages/solutions/' ~ loop.index ~ '.svg',
+						alt: 'item ' ~ loop.index 
+					}%}
+					{{ item.list_content }}
+				</div>
+			{% endfor %}
+        </div>
+        <div class="benefits__col benefits__col--two">
+            <picture class="benefits__featured-image">
+                {% include 'shared/media.twig' with {
+                    source: post.get_field('benefits_image').url,
+                    alt: post.get_field('benefits_image').alt,
+                    class: 'benefits__featured-img',
+                }%}
+            </picture>
+        </div>
+    </div>
+</section>

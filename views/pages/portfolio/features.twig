@@ -1,0 +1,41 @@
+<section id="features" class="features">
+	<div class="features__wrapper">
+		<div class="features__bg">
+			<picture class="features__picture">
+				<source data-srcset="{{ theme.link ~ '/src/assets/img/dev/pages/portfolio/features-bg-1024.jpg' }}" media="(max-width: 1023px)" class="lazyload">
+				<source data-srcset="{{ theme.link ~ '/src/assets/img/dev/pages/portfolio/features-bg-1200.jpg' }}" media="(max-width: 1199px)" class="lazyload">
+				<source data-srcset="{{ theme.link ~ '/src/assets/img/dev/pages/portfolio/features-bg-1440.jpg' }}" media="(max-width: 1439px)" class="lazyload">
+				<source data-srcset="{{ theme.link ~ '/src/assets/img/dev/pages/portfolio/features-bg.jpg' }}" media="(max-width: 1919px)" class="lazyload">
+				<img alt="Digital portfolios"
+					class="features__image lazyload"
+					data-srcset="{{ theme.link ~ '/src/assets/img/dev/pages/portfolio/features-img-full-length.jpg' }}"/>
+			</picture>
+		</div>
+		<picture class="features__phone">
+			{% include 'shared/media.twig' with {
+				source: Image(post.get_field('features_phone_image')).src,
+				alt: Image(post.get_field('features_phone_image')).alt,
+				class: 'features__phone-img',
+			}%}
+		</picture>
+		<div class="features__main">
+			<div class="features__col features__col--one">
+				<header>
+					<h2>{{ post.get_field('features_title') }}</h2>
+				</header>
+				<ul>
+					{% for item in post.get_field('features_list_left') %}
+						<li>{{ item.list_text }}</li>
+					{% endfor %}
+				</ul>
+			</div>
+			<div class="features__col features__col--two">
+				<ul>
+					{% for item in post.get_field('features_list_right') %}
+						<li>{{ item.list_text }}</li>
+					{% endfor %}
+				</ul>
+			</div>
+		</div>
+	</div>
+</section>

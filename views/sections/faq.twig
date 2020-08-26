@@ -1,0 +1,55 @@
+{% set is_faq = post.get_field('is_faq_accordion') == 'yes' %}
+
+<section id="faq" class="faq accordion-section{{ not is_faq ? ' accordion-section--normal-accordion' }}">
+	<div class="faq__wrapper">
+		<header class="faq__heading">
+			{% if (post.get_field('accordion_title_image')) %}
+				<figure class="faq__decoration">
+					{% include 'shared/media.twig' with {
+						source: Image(post.get_field('accordion_title_image')).src,
+						alt: Image(post.get_field('accordion_title_image')).alt,
+						class: 'faq__decoration-image',
+					}%}
+				</figure>
+			{% endif %}
+
+			<h2 class="faq__title">{{ post.get_field('accordion_title') }}</h2>
+		</header>
+
+		<div class="faq__accordion accordion">
+			{% for item in post.get_field('accordion_elements') %}
+				<div class="accordion__item item" data-index="{{ loop.index0 }}">
+					<div class="item__header">
+						<button aria-label="View accordion content" class="item__header-button">
+							{% if (is_faq) %}
+								<figure class="item__header-decoration">
+									{% include 'shared/media.twig' with {
+										source: theme.link ~ '/src/assets/img/prod/pages/pricing/faq-question-decoration.svg',
+										alt: 'Question',
+										class: 'item__header-decoration-icon',
+									}%}
+								</figure>
+							{% endif %}
+							<h3 class="item__header-text">{{ item.accordion_title }}</h3>
+						</button>
+					</div>
+
+					<div class="item__content">
+						<div class="item__content-wrapper">
+							{% if (is_faq) %}
+								<figure class="item__content-decoration">
+									{% include 'shared/media.twig' with {
+										source: theme.link ~ '/src/assets/img/prod/pages/pricing/faq-answer-decoration.svg',
+										alt: 'Answer',
+										class: 'item__content-decoration-icon',
+									}%}
+								</figure>
+							{% endif %}
+							<div class="item__content-text">{{ item.accordion_content }}</div>
+						</div>
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+	</div>
+</section>

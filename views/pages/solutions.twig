@@ -1,0 +1,26 @@
+{% extends 'base.twig' %}
+
+{% set template = 'solutions' %}
+
+{% block content %}
+	<div id="solutions" class="page page--solutions">
+		{% include 'pages/solutions/hero.twig' %}
+		{% include 'pages/solutions/benefits.twig' %}
+		{% include 'shared/features.twig' with {
+			title: post.get_field('features_title'),
+			subtitle: post.get_field('features_subtitle'),
+			content: post.get_field('features_content'),
+			image_decoration: post.get_field('features_image_decoration'),
+			image: post.get_field('features_image'),
+			image_first: false
+		} %}
+		{% include 'pages/solutions/learning.twig' %}
+		{% include 'pages/solutions/mobile.twig' %}
+		{% include 'pages/solutions/portfolio.twig' %}
+		{% include 'pages/solutions/percent.twig' %}
+		{% include 'shared/resource-center.twig' %}
+		{% if (post.get_field('field_override_hide_contact_bar') != 'yes')  %}
+			{% include 'shared/contact-bar.twig' %}
+		{% endif %}
+	</div>
+{% endblock %}

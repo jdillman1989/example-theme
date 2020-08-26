@@ -1,0 +1,54 @@
+<section id="plans" class="plans">
+	<div class="plans__wrapper">
+		<div class="plans__headline">{{ post.get_field('pricing_plans_vertical_label') }}</div>
+		<div class="plans__circle-decoration"></div>
+
+		<div class="plans__heading">
+			<h2 class="plans__title">{{ post.get_field('pricing_plans_title') }}</h2>
+			<div class="plans__description">{{ post.get_field('pricing_plans_description') }}</div>
+			<div class="plans__cta">
+				{% include 'shared/button.twig' with {
+					href: post.get_field('pricing_plans_button').url,
+					label: post.get_field('pricing_plans_button').title,
+					style: 'light-primary',
+				}%}
+			</div>
+		</div>
+
+		<div id="plans-slider" class="plans__slider slider">
+			<div class="slider__items">
+				{% for item in post.get_field('pricing_plans_items') %}
+					{% include 'shared/plan-card.twig' with {
+						data: item,
+						class: 'slider__item',
+					}%}
+				{% endfor %}
+			</div>
+
+			<nav class="slider__controls">
+				<button
+					aria-label="Previous Plan"
+					class="slider__arrow slider__arrow--prev"
+					data-direction="prev">
+					{% include 'icons/slider-arrow.svg.twig' with {
+						direction: 'prev',
+					}%}
+				</button>
+
+				<div class="slider__indicator">
+					<span class="slider__indicator-current">1</span>
+					<span class="slider__indicator-total">/{{ post.get_field('pricing_plans_items') | length }}</span>
+				</div>
+
+				<button
+					aria-label="Next Plan"
+					class="slider__arrow slider__arrow--prev"
+					data-direction="next">
+					{% include 'icons/slider-arrow.svg.twig' with {
+						direction: 'next',
+					}%}
+				</button>
+			</nav>
+		</div>
+	</div>
+</section>

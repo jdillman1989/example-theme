@@ -1,0 +1,19 @@
+.page--portfolio .remote-learning {
+
+	@include media('>phone') {
+		padding: 0;
+	}
+
+	@include media('>tablet') {
+		padding: 0;
+	}
+
+	&::after {
+		@extend %decoration__ring--orange;
+
+		right: 0;
+		bottom: 0;
+		transform: translate(50%, 50%);
+
+	}
+}

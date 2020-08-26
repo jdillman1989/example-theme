@@ -1,0 +1,16 @@
+<section id="pricing" class="plans">
+	<div class="plans__wrapper">
+		<div class="plans__box">
+			<div class="plans__list">
+				{% for item in post.get_field('pricing_plans_items') %}
+					{% include 'shared/plan-card.twig' with {
+						data: item,
+						class: 'plans__card',
+						layout: 'basic',
+						selected_class: (preselected == loop.index) or (preselected == -1) and (loop.index == 2)  ? 'preselected' : ''
+					}%}
+				{% endfor %}
+			</div>
+		</div>
+	</div>
+</section>

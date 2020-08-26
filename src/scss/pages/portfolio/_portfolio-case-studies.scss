@@ -1,0 +1,37 @@
+.page--portfolio .case-studies {
+
+	@include media('>phone') {
+		margin-top: rem-calc(-20);
+	}
+
+	@include media('>tablet') {
+		padding-top: rem-calc(100);
+	}
+
+	&::before {
+		content: '';
+		position: absolute;
+		top: 0;
+		right: 0;
+		left: 0;
+		z-index: -1;
+		display: block;
+		width: 100%;
+		height: 60%;
+		background-color: $color-gray-light;
+
+		@include media('>tablet') {
+			right: auto;
+			width: 75%;
+			height: 35%;
+		}
+	}
+
+	&__headline {
+		display: none;
+	}
+
+	&__decoration {
+		z-index: 0;
+	}
+}

@@ -1,0 +1,26 @@
+<section id="hero" class="hero">
+	<div class="circle-decoration"></div>
+
+	<div class="hero__background">
+		{% include 'shared/media.twig' with {
+			source: post.get_field('hero_image').url,
+			alt: post.get_field('hero_image').title,
+			class: 'hero__background-image',
+		}%}
+	</div>
+
+	<div class="hero__wrapper">
+		<div class="hero__col">
+			<div class="hero__decoration">
+				{% include 'shared/media.twig' with {
+					source: theme.link ~ '/src/assets/img/dev/pages/pricing/hero-decoration.svg',
+					alt: 'Our Plans',
+					class: 'hero__decoration-image',
+				}%}
+			</div>
+
+			<h1 class="hero__title">{{ post.get_field('hero_title') }}</h1>
+			<div class="hero__description">{{ post.get_field('hero_description') }}</div>
+		</div>
+	</div>
+</section>

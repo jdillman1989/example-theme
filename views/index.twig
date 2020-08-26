@@ -1,0 +1,11 @@
+{% extends "base.twig" %}
+
+{% set template = 'index' %}
+
+{% block content %}
+	<div class="index">
+		{% for post in posts %}
+			{% include 'shared/post-item.twig' %}
+		{% endfor %}
+	</div>
+{% endblock %}

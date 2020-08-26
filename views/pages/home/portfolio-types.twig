@@ -1,0 +1,82 @@
+<section id="portfolio" class="portfolio">
+	<div class="portfolio__wrapper">
+		<h2 class="portfolio__title">{{ post.get_field('portfolio_vertical_label') }}</h2>
+
+		<div class="portfolio__col portfolio__col--one">
+			<div class="portfolio__col-wrapper">
+				<div id="portfolio-slider-one" class="portfolio__slider-one slider-one">
+					<div class="slider-one__items owl-carousel">
+						{% for item in post.get_field('portfolio_items') %}
+							<div class="slider-one__item">
+								{% include 'shared/media.twig' with {
+									source: item.item_image.url,
+									alt: item.item_image.alt,
+								}%}
+							</div>
+						{% endfor %}
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="portfolio__col portfolio__col--two">
+			<div class="portfolio__col-wrapper">
+				<div id="portfolio-slider-two" class="portfolio__slider-two slider-two">
+					<div class="slider-two__items">
+						{% for item in post.get_field('portfolio_items') %}
+							<div class="slider-two__item item" data-index="{{ loop.index0 }}">
+								<h3 class="item__title">
+									<button
+										class="item__title-button"
+										title="Read description">
+										{{ item.item_title }}
+									</button>
+									<a
+										href="{{ item.item_button_link }}"
+										title="Learn More"
+										class="item__title-link">
+										{% include 'shared/media.twig' with {
+											source: theme.link ~ '/src/assets/img/prod/general/link-out-arrow.svg',
+											alt: 'Learn More',
+											class: 'item__title-link-icon',
+										}%}
+									</a>
+								</h3>
+								<div class="item__description">
+									<div class="item__description-wrapper">
+										{{ item.item_content }}
+									</div>
+								</div>
+							</div>
+						{% endfor %}
+					</div>
+
+					<nav class="slider-two__controls">
+						<button
+							aria-label="Previous User Type"
+							class="slider-two__arrow slider-two__arrow--prev"
+							data-direction="prev">
+							{% include 'icons/slider-arrow.svg.twig' with {
+								direction: 'prev',
+							}%}
+						</button>
+
+						<div class="slider-two__indicator">
+							<span class="slider-two__indicator-current">1</span>
+							<span class="slider-two__indicator-total">/{{ post.get_field('portfolio_items') | length }}</span>
+						</div>
+
+						<button
+							aria-label="Next User Type"
+							class="slider-two__arrow slider-two__arrow--prev"
+							data-direction="next">
+							{% include 'icons/slider-arrow.svg.twig' with {
+								direction: 'next',
+							}%}
+						</button>
+					</nav>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

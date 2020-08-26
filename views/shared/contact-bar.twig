@@ -1,0 +1,30 @@
+{% set is_contact_overridden = post.get_field('field_override_contact_bar_elements') %}
+{% set overriden_title = post.get_field('field_override_contact_bar_title') %}
+{% set overriden_subtitle = post.get_field('field_override_contact_bar_subtitle') %}
+<div id="contact-bar" class="contact-bar">
+	<div class="contact-bar__text{{ is_contact_overridden == 'yes' and overriden_title == '' ? ' contact-bar__text--no-title'}}{{ is_contact_overridden == 'yes' and overriden_subtitle == '' ? ' contact-bar__text--no-subtitle'}}">
+		<h2 class="contact-bar__title">{{ overriden_title ?: options['contact_bar_title'] }}</h2>
+		<p class="contact-bar__subtitle">{{ overriden_subtitle ?: options['contact_bar_subtitle'] }}</p>
+	</div>
+
+	<div class="contact-bar__cta">
+		{% set link = post.get_field('field_override_contact_bar_cta') ?: options['contact_bar_cta'] %}
+		{% include 'shared/button.twig' with {
+			href: link.url,
+			label: link.title,
+		}%}
+	</div>
+	{% if post.get_field('field_override_contact_bar_add_cat_icon') == 'yes' %}
+		<button id="chat-icon-js-trigger" aria-label="Chat with bulb" class="contact-bar__chat">
+			<span class="contact-bar__chat-text">Chat</span>
+			<figure class="contact-bar__chat-figure">
+				{% include 'shared/media.twig' with {
+					source: theme.link ~ '/src/assets/img/prod/general/chat-icon.svg',
+					alt: '',
+					class: 'contact-bar__chat-img',
+				}%}
+			</figure>
+		</button>
+		{{ post.get_field('chat_bot_script') }}
+	{% endif %}
+</div>

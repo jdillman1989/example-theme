@@ -1,0 +1,32 @@
+<section id="percent" class="percent">
+	<div class="percent__wrapper">
+		<div class="percent__col percent__col--one">
+			<div class="percent__col--wrapper">
+				<picture class="percent__featured-image">
+					{% include 'shared/media.twig' with {
+						source: Image(post.get_field('percentage_users_image')).src,
+						alt: Image(post.get_field('percentage_users_image')).alt,
+						class: 'percent__featured-img',
+					}%}
+				</picture>
+			</div>
+		</div>
+		<div class="percent__col percent__col--two">
+			<div class="percent__col--wrapper">
+				<div class="percent__content">
+					<figure class="percent__decoration">
+						{% include 'shared/media.twig' with {
+							source: Image(post.get_field('percentage_image')).src,
+							alt: Image(post.get_field('percentage_image')).alt,
+							class: 'percent__image',
+						}%}
+					</figure>
+					{{ post.get_field('percentage_content') }}
+				</div>
+				<div class="percent__callout">
+					<span>{{ post.get_field('percentage') }}</span>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

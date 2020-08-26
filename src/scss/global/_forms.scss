@@ -1,0 +1,58 @@
+form {
+	label {
+		font-family: $font-mreaves;
+		font-weight: bold !important;
+		margin-bottom: rem-calc(10) !important;
+		margin-top: 7px;
+	}
+
+	input:not([type="checkbox"]):not([type="radio"]),
+	textarea,
+	select {
+		@extend %section-body__copy;
+
+		width: 100%;
+		padding: rem-calc(12);
+		margin-bottom: rem-calc(25);
+		font-family: $font-mreaves;
+		border: 2px solid $color-gray-light;
+		border-radius: 5px;
+		transition: all .2s;
+		font-size: rem-calc(16);
+		letter-spacing: -0.62px;
+
+		&:focus {
+			box-shadow: 0 5px 17px 0 rgba(0,0,0,0.04);
+			border: 2px solid $color-primary;
+		}
+	}
+
+	textarea {
+		height: rem-calc(180);
+	}
+
+	select {
+		appearance: none;
+		position: relative;
+		background-image: url(/wp-content/themes/bulb-app/src/assets/img/prod/general/chevron.svg);
+		background-size: 11px;
+		background-position: 98% center;
+		background-repeat: no-repeat;
+
+	}
+
+	input[type=submit] {
+		@extend .btn;
+		@extend .btn--var-filled;
+		@extend .btn--style-primary.btn--var-filled;
+
+		width: auto;
+		display: inline-flex;
+		align-content: center;
+		justify-content: center;
+		text-align: center;
+		font-family: $font-mreaves;
+		font-weight: bold;
+		line-height: 0;
+	}
+}

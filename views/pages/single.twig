@@ -1,0 +1,23 @@
+{% extends "base.twig" %}
+
+{% set template = 'single' %}
+
+{% block content %}
+
+	<article class="single">
+		<div class="single__wrapper">
+			<div class="single__content">
+				{{ post.content }}
+			</div>
+			{% if post.get_field('add_related_content') != 'no' and related_content|length %}
+				<div class="single__related">
+					{% include 'pages/single/related-content.twig' %}
+				</div>
+			{% endif %}
+		</div>
+	</article>
+
+	{% if (post.get_field('field_override_hide_contact_bar') != 'yes')  %}
+		{% include 'shared/contact-bar.twig' %}
+	{% endif %}
+{% endblock %}

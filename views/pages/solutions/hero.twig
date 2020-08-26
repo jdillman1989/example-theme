@@ -1,0 +1,35 @@
+<section id="hero" class="hero">
+	<div class="hero__col hero__col--one">
+		<div class="hero__col-wrapper">
+			<header class="hero__heading">
+                <div class="hero__decoration">
+                    {% include 'shared/media.twig' with {
+                        source: theme.link ~ '/src/assets/img/dev/pages/solutions/hero-decoration.svg',
+                        alt: 'Solutions',
+                        class: 'hero__decoration--img',
+                    }%}
+                </div>
+				<h1 class="hero__title">{{ post.get_field('hero_text') }}</h1>
+			</header>
+		</div>
+	</div>
+
+	<div class="hero__col hero__col--two">
+        <div class="hero__col-wrapper">
+            <div class="hero__video">
+                <picture class="hero__featured-image">
+                    {% include 'shared/media.twig' with {
+                        source: post.get_field('video_image').url,
+                        alt: post.get_field('video_image').alt,
+                        class: 'hero__featured-img',
+                    }%}
+                </picture>
+                <button class="js-modal-button hero__video video-button"><span>Play Video</span></button>
+                <div class="js-modal-content js-modal-hidden">
+                    {{ post.get_field('hero_video_iframe') }}
+                </div>
+            </div>
+        </div>
+	</div>
+	{% include 'pages/solutions/dec-hero-line.twig' %}
+</section>

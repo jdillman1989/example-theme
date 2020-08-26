@@ -1,0 +1,63 @@
+.elementor-image-hero {
+	position: relative;
+	left: -12px;
+	width: calc(100% + 24px);
+
+	@include media('>=phone') {
+		display: flex;
+		align-items: stretch;
+		align-content: stretch;
+	}
+
+	&__picture {
+		@extend %media__picture;
+
+		max-height: rem-calc(350);
+
+		@include media('>=phone') {
+			max-height: rem-calc(550);
+		}
+	}
+
+	.elementor-image-hero__image {
+		@extend %media__picture-image--cover;
+	}
+
+	&__main {
+		@include ratio(320, 266);
+
+		@include media('>=phone') {
+			@include ratio(1345, 530);
+
+			width: 70%;
+		}
+	}
+
+	&__side {
+		display: none;
+
+		@include media('>=phone') {
+			@include ratio(575, 538);
+
+			display: block;
+			width: 30%;
+		}
+
+		&::before {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			z-index: 2;
+			width: 100%;
+			height: 100%;
+			background-color: rgba($color-secondary, 0.95);
+			mix-blend-mode: multiply;
+		}
+
+		.elementor-image-hero__image {
+			opacity: 0.7;
+			filter: grayscale(0.75);
+		}
+	}
+}

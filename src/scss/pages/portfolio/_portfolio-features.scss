@@ -1,0 +1,243 @@
+.page--portfolio .features {
+	position: relative;
+	background-color: $color-gray-light;
+
+	@include media('>=phone') {
+		background-color: transparent;
+		margin-top: rem-calc(-45);
+	}
+
+	&__wrapper {
+		position: relative;
+		width: 100%;
+		max-width: rem-calc(1920);
+		margin-left: auto;
+		margin-right: auto;
+
+		@include media('>=phone') {
+			padding-top: rem-calc(45);
+		}
+
+		&::after {
+			@include media('>=1920px') {
+				content: '';
+				position: absolute;
+				bottom: 0;
+				left: 50%;
+				z-index: 1;
+				transform: translateX(-50%);
+				width: 100vw;
+				height: calc(100% - 141px);
+				background-color: $color-gray-light;
+			}
+		}
+	}
+
+	&__bg {
+		display: none;
+
+		@include media('>=phone') {
+			position: relative;
+			z-index: 2;
+			display: block;
+			width: 100%;
+		}
+
+		@include media('>=1920px') {
+			left: 50%;
+			transform: translateX(-50%);
+			width: 3320px;
+		}
+
+		img {
+			width: 100%;
+			height: auto;
+		}
+	}
+
+	&__phone {
+		@extend %media__picture;
+		@include ratio(545, 820);
+
+		position: absolute;
+		bottom: 0;
+		left: 50%;
+		z-index: 3;
+		transform: translateX(-50%);
+		width: 34%;
+
+		@include media('<phone') {
+			display: none;
+		}
+
+		&-img {
+			@extend %media__picture-image--contain;
+
+			object-position: center bottom;
+		}
+	}
+
+	&__main {
+		max-width: rem-calc(330);
+		padding: rem-calc(30) rem-calc(12);
+		margin: 0 auto;
+
+		@include media('>=phone') {
+			position: absolute;
+			top: 18%;
+			right: 0;
+			left: 0;
+			z-index: 3;
+			display: flex;
+			justify-content: space-between;
+			width: 78%;
+			max-width: rem-calc(1500);
+			padding: 0;
+		}
+
+		@include media('>=tablet') {
+			top: 22%;
+		}
+
+
+	}
+
+	&__col {
+
+		@include media('>=phone') {
+			width: 30%;
+		}
+
+		header {
+
+			h2 {
+				@extend %section-heading__title;
+
+				position: relative;
+				margin-bottom: rem-calc(30);
+				font-size: rem-calc(32);
+
+				@include media('>=phone') {
+					font-size: rem-calc(24);
+				}
+
+				@include media('>=tablet') {
+					font-size: rem-calc(32);
+				}
+
+				@include media('>=desktop-small') {
+					margin-bottom: rem-calc(40);
+					font-size: rem-calc(42);
+				}
+
+				@include media('>=desktop-medium') {
+					margin-bottom: rem-calc(50);
+					font-size: rem-calc(48);
+				}
+
+				@include media('>=1600px') {
+					font-size: rem-calc(54);
+				}
+
+				@include media('>=desktop-large') {
+					margin-bottom: rem-calc(60);
+					font-size: rem-calc(62);
+				}
+
+				@include media('>=1920px') {
+					font-size: rem-calc(68);
+				}
+			}
+		}
+
+		ul {
+			@include media('>=phone') {
+				padding-left: 8%;
+			}
+
+			@include media('>=tablet') {
+				padding-left: 15%;
+			}
+
+			@include media('>=desktop-small') {
+				padding-left: 10%;
+			}
+
+			li {
+				position: relative;
+				padding-left: rem-calc(22);
+				margin-bottom: rem-calc(16);
+				font-family: $font-mreaves;
+				font-size: rem-calc(18);
+
+				@include media('>=phone') {
+					font-size: rem-calc(13);
+				}
+
+				@include media('>=tablet') {
+					font-size: rem-calc(16);
+					padding-left: rem-calc(28);
+				}
+
+				@include media('>=desktop-small') {
+					font-size: rem-calc(22);
+					padding-left: rem-calc(38);
+				}
+
+				@include media('>=desktop-medium') {
+					font-size: rem-calc(24);
+					margin-bottom: rem-calc(20);
+				}
+
+				@include media('>=desktop-large') {
+					padding-left: rem-calc(50);
+					margin-bottom: rem-calc(25);
+					font-size: rem-calc(28);
+				}
+
+				@include media('>=1920px') {
+					font-size: rem-calc(30);
+					margin-bottom: rem-calc(30);
+				}
+
+				&::before {
+					content: '';
+					position: absolute;
+					top: -2px;
+					left: 0;
+					width: rem-calc(15);
+					height: rem-calc(15);
+					background-image: url('../../src/assets/img/dev/pages/portfolio/bulb-icon.png');
+					background-size: 30%;
+					background-repeat: no-repeat;
+					background-position: center center;
+					border: 1px solid $color-primary;
+					border-radius: 50%;
+
+					@include media('>=phone') {
+						top: 1px;
+						width: rem-calc(12);
+						height: rem-calc(12);
+					}
+
+					@include media('>=tablet') {
+						top: 2px;
+						width: rem-calc(15);
+						height: rem-calc(15);
+					}
+
+					@include media('>=desktop-small') {
+						width: rem-calc(22);
+						height: rem-calc(22);
+					}
+
+					@include media('>=desktop-large') {
+						top: 0;
+						width: rem-calc(28);
+						height: rem-calc(28);
+					}
+				}
+			}
+		}
+	}
+}

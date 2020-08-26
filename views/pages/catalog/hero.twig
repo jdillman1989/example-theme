@@ -1,0 +1,42 @@
+{% set link = featured.get_field('external_link') ?: featured.link %}
+<section id="hero" class="hero">
+	<div class="hero__wrapper">
+		<div class="hero__col hero__col--one">
+			<div class="hero__col-wrapper">
+				<picture class="hero__featured-image">
+					{% include 'shared/media.twig' with {
+						source: featured.thumbnail.src ?: '/wp-content/themes/bulb-app/src/assets/img/prod/general/blog-placeholder.jpg',
+						alt: featured.title,
+						class: 'hero__featured-img',
+					}%}
+				</picture>
+			</div>
+		</div>
+
+		<div class="hero__col hero__col--two">
+			<div class="hero__col-wrapper">
+				<span class="hero__date">{{ featured.date }}</span>
+				<header class="hero__heading">
+					<figure class="hero__decoration">
+						{% include 'shared/media.twig' with {
+							source: theme.link ~ '/src/assets/img/dev/pages/catalog/featured-decoration.svg',
+							alt: 'bulb',
+							class: 'hero__decoration--img',
+						}%}
+					</figure>
+					<h1 class="hero__title">{{ featured.title }}</h1>
+					{% set excerpt = featured.get_field('post_excerpt') %}
+					{% if (excerpt) %}
+						<p>{{ excerpt }}</p>
+					{% endif %}
+					{% include 'shared/button.twig' with {
+						href: link,
+						label: featured.post_type == 'resource' ? 'View Resource' : 'Full Article',
+						style: 'primary-border',
+						size: 'large',
+					}%}
+				</header>
+			</div>
+		</div>
+	</div>
+</section>

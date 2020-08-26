@@ -1,0 +1,70 @@
+// Utilities
+@import './utils/variables';
+@import './utils/responsive';
+@import './utils/functions';
+@import './utils/mixins';
+
+// Vendor
+@import './vendor/normalize';
+
+// Base
+@import './base/_reset';
+@import './base/_content';
+
+// Placeholders
+@import './placeholders/media';
+@import './placeholders/default-styles';
+
+// Global
+@import './global/typography';
+@import './global/global';
+@import './global/forms';
+
+// Components
+@import './shared/decorations';
+@import './shared/button';
+@import './shared/media';
+@import './shared/contact-bar';
+@import './shared/modal';
+@import './shared/video-button';
+@import './shared/accordion';
+@import './shared/solutions-features';
+
+// Layout
+@import './layout/_header';
+@import './layout/_mobile-menu';
+@import './layout/_megamenu';
+@import './layout/_footer';
+
+// Pages
+@import './pages/home/_home';
+@import './pages/solutions/_solutions';
+@import './pages/portfolio/_portfolio';
+@import './pages/pricing/_pricing';
+@import './pages/catalog/_catalog';
+
+// Sections
+@import './sections/_remote-learning';
+@import './sections/_case-studies';
+@import './sections/_faq';
+
+// Templates
+@import './templates/default/default';
+@import './templates/not-found/not-found';
+@import './templates/single/related-content';
+@import './templates/single/single';
+
+@import './elementor/_elementor-general';
+@import './elementor/image-hero';
+@import './elementor/_blog-post-header';
+@import './elementor/_quote-section';
+@import './elementor/_image-text';
+@import './elementor/_two-column';
+@import './elementor/_author-meta';
+
+@import './elementor/_generic-header';
+@import './elementor/_generic-media-gallery';
+@import './elementor/_generic-table';
+@import './elementor/_accordion-section';
+@import './elementor/_generic-form';
+

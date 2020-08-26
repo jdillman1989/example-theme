@@ -1,0 +1,21 @@
+.single {
+	#main-content {
+		position: relative;
+		padding-bottom: rem-calc(62);
+
+		@include media('>phone') {
+			padding-bottom: rem-calc(74);
+		}
+
+		@include media('>desktop-small') {
+			padding-bottom: rem-calc(90);
+		}
+
+	}
+
+	&:not(.elementor-page) {
+		.single {
+			@extend %default__base;
+		}
+	}
+}

@@ -1,0 +1,20 @@
+/**
+ *  Function z-index() accepts a string value from the $z-indexs array.
+ *  Generates a z-index vaule that maintains hierarchical presentation
+ */
+$z-indexes: (
+	'transition',
+	'modal',
+	'menu',
+	'content'
+);
+
+@function z-index($name) {
+	@if index($z-indexes, $name) {
+		@return (length($z-indexes) - index($z-indexes, $name)) + 1;
+	} @else {
+		@warn 'There is no item "#{$name}" in this list; choose one of: #{$z-indexes}';
+
+		@return null;
+	}
+}

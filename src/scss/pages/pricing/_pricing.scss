@@ -1,0 +1,10 @@
+.page--pricing  .faq {
+	margin-top: rem-calc(-200);
+}
+
+/** Sections */
+@import './_pricing-hero';
+@import './_pricing-plans';
+@import './_pricing-users';
+@import './_pricing-resource-center';
+@import './_pricing-plans-cta';

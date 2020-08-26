@@ -1,0 +1,26 @@
+{% extends 'base.twig' %}
+
+{% set template = 'not-found' %}
+
+{% block content %}
+    <div class="not-found">
+        <header class="not-found__header">
+            <h1 class="not-found__header-title">
+            	404 Page Not Found
+            </h1>
+
+            <p class="not-found__header-description">
+                Please try another URL.
+            </p>
+
+			<a href="/" class="btn btn--var-filled btn--size-large btn--style-primary-border not-found__button">
+				<span class="btn__text">Return Home</span>
+				<span class="btn__icon">
+					<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="22px" height="21px" viewBox="0 0 22 21">
+						<path fill-rule="evenodd" d="M3.071,20.972 L17.555,5.779 L16.772,18.489 L19.900,18.180 L21.020,0.022 L3.143,1.789 L2.947,4.967 L15.461,3.730 L0.976,18.923 L3.071,20.972 Z"></path>
+					</svg>
+				</span>
+			</a>
+        </header>
+    </div>
+{% endblock %}

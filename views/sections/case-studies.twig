@@ -1,0 +1,123 @@
+<section id="case-studies" class="case-studies">
+	<div class="case-studies__wrapper">
+		{% if (case_studies_vertical_label) %}
+			<div class="case-studies__headline">{{ case_studies_vertical_label }}</div>
+		{% endif %}
+
+		<div class="case-studies__col case-studies__col--one">
+			<div class="case-studies__col-wrapper">
+				<div class="case-studies__decoration">
+					{% include 'shared/media.twig' with {
+						source: theme.link ~ '/src/assets/img/dev/sections/case-studies/decoration.svg',
+						alt: 'Studies',
+						class: 'case-studies__decoration-image',
+					}%}
+				</div>
+
+				<div class="case-studies__heading">
+					{% if case_studies_title %}
+						<h2 class="case-studies__title">{{ case_studies_title }}</h2>
+					{% endif %}
+					{% if case_studies_cta %}
+						<div class="case-studies__cta">
+							{% include 'shared/button.twig' with {
+								href: case_studies_cta.url,
+								label: case_studies_cta.title,
+								variation: 'simple',
+								size: 'large',
+								style: 'dark-primary',
+							}%}
+						</div>
+					{% endif %}
+				</div>
+			</div>
+		</div>
+
+		<div class="case-studies__col case-studies__col--two">
+			<div class="case-studies__col-wrapper">
+				<div
+					id="case-studies-slider"
+					class="case-studies__slider slider"
+					data-length="{{ case_studies | length }}">
+					<div class="slider__items">
+
+						{% if case_studies %}
+							{% for item in case_studies %}
+								<a href="{{ item.url }}" class="slider__item item">
+									<div class="item__wrapper">
+										<div class="item__decoration">
+											{% include 'shared/media.twig' with {
+												source: theme.link ~ '/src/assets/img/dev/sections/case-studies/quote-decoration.svg',
+												alt: 'Quote',
+												class: 'item__decoration-image',
+											}%}
+										</div>
+
+										<div class="item__content">
+											{% if item.profile_image %}
+												<picture class="item__picture">
+													{% include 'shared/media.twig' with {
+														source: item.profile_image.url,
+														alt: item.profile_image.alt,
+														class: 'item__image',
+													}%}
+												</picture>
+											{% endif %}
+											{% if item.quote %}
+												<blockquote class="item__text">{{ item.quote }}</blockquote>
+											{% endif %}
+										</div>
+
+										<div class="item__meta">
+											{% if item.icon %}
+												{% include 'shared/media.twig' with {
+													source: item.icon.url,
+													alt: item.icon.alt,
+													class: 'item__company-logo',
+												}%}
+											{% endif %}
+
+											<div class="item__meta-info">
+												{% if item.user_name %}
+													<div class="item__author-name">{{ item.user_name }}</div>
+												{% endif %}
+												{% if item.user_role %}
+													<div class="item__author-role">{{ item.user_role }}</div>
+												{% endif %}
+											</div>
+										</div>
+									</div>
+								</a>
+							{% endfor %}
+						{% endif %}
+					</div>
+
+					<nav class="slider__controls">
+						<button
+							aria-label="Previous case study"
+							class="slider__arrow slider__arrow--prev"
+							data-direction="prev">
+							{% include 'icons/slider-arrow.svg.twig' with {
+								direction: 'prev',
+							}%}
+						</button>
+
+						<div class="slider__indicator">
+							<span class="slider__indicator-current">1</span>
+							<span class="slider__indicator-total">/{{ case_studies | length }}</span>
+						</div>
+
+						<button
+							aria-label="Next case study"
+							class="slider__arrow slider__arrow--prev"
+							data-direction="next">
+							{% include 'icons/slider-arrow.svg.twig' with {
+								direction: 'next',
+							}%}
+						</button>
+					</nav>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

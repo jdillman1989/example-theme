@@ -1,0 +1,109 @@
+<div id="mobile-menu" class="mobile-menu">
+	<div class="mobile-menu__content">
+		<div class="mobile-menu__decoration">
+			{% include 'shared/media.twig' with {
+				source: theme.link ~ '/src/assets/img/prod/layout/mobile-menu/decoration.svg',
+				alt: 'Menu',
+				class: 'mobile-menu__decoration-image',
+			}%}
+		</div>
+
+		<div class="mobile-menu__content-wrapper">
+			<nav class="mobile-menu__main-nav main-nav">
+				<ul class="main-nav__list">
+					{% for item in main_navigation %}
+						<li
+							class="main-nav__item {{ item.submenu ? 'main-nav__item--has-megamenu' }}"
+							data-index="{{ loop.index0 }}">
+							{% if item.submenu %}
+								<button
+									title="Open submenu"
+									class="main-nav__item-link">
+									{{ item.top.title }}
+								</button>
+							{% else %}
+								<a
+									href="{{ item.top.url }}"
+									class="main-nav__item-link">
+									{{ item.top.title }}
+								</a>
+							{% endif %}
+						</li>
+					{% endfor %}
+				</ul>
+			</nav>
+
+			<nav class="mobile-menu__secondary-nav secondary-nav">
+				<ul class="secondary-nav__list">
+					{% for item in secondary_navigation %}
+						<li class="secondary-nav__item">
+							<a
+								href="{{ item.link.url }}"
+								class="secondary-nav__item-link">
+								{{ item.link.title }}
+							</a>
+						</li>
+					{% endfor %}
+				</ul>
+			</nav>
+
+			<div class="mobile-menu__actions actions">
+				<ul class="actions__list">
+					<li class="actions__item actions__item--login">
+						<a
+							href="{{ options.login_button.url }}"
+							class="actions__button">
+							<span class="actions__button-text">{{ options.login_button.title }}</span>
+							{% include 'shared/media.twig' with {
+								source: theme.link ~ '/src/assets/img/prod/layout/header/action-login-icon.svg',
+								alt: options.login_button.title,
+								class: 'actions__button-icon',
+							}%}
+						</a>
+					</li>
+
+					<li class="actions__item actions__item--signup">
+						{% include 'shared/button.twig' with {
+							href: options.signup_button.url,
+							label: options.signup_button.title,
+						}%}
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+	<div class="mobile-menu__social social">
+		<ul class="social__list">
+			{% for social in social_links %}
+				<li class="social__item">
+					<a
+						href="{{ social.link.url }}"
+						title="{{ social.link.title }}"
+						rel="noopener noreferrer"
+						target="_blank"
+						class="social__item-link">
+						{% if social.white_social_icon %}
+							{% include 'shared/media.twig' with {
+								source: Image(social.white_social_icon).src,
+								alt: 'Bulb ' ~ social.link.title,
+								class: 'social__link-icon',
+							}%}
+						{% else %}
+							{{ social.link.title }}
+						{% endif %}
+					</a>
+				</li>
+			{% endfor %}
+		</ul>
+	</div>
+
+	{% for item in main_navigation %}
+		{% if item.submenu %}
+			{% include 'layout/mobile-menu-submenu.twig' with {
+				index: loop.index0,
+				data: item,
+			}%}
+		{% endif %}
+	{% endfor %}
+</div>

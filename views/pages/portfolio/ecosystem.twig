@@ -1,0 +1,69 @@
+<section id="ecosystem" class="ecosystem">
+	<div class="ecosystem__wrapper">
+
+		<div class="ecosystem__col ecosystem__col--one">
+			<div class="ecosystem__col-wrapper">
+				<h2 class="ecosystem__heading">
+					{{ post.get_field('ecosystem_title') }}
+				</h2>
+				<div class="ecosystem__main-content">
+					{{ post.get_field('ecosystem_content') }}
+				</div>
+			</div>
+		</div>
+
+		<div class="ecosystem__col ecosystem__col--two">
+			<div class="ecosystem__col-wrapper">
+
+				<div class="ecosystem__underlay">
+					<div class="ecosystem__underlay--connections">
+						{% for option in eco_options %}
+							<div class="connection-line" id="{{ option }}Connection"></div>
+						{% endfor %}
+					</div>
+				</div>
+
+				{% include 'pages/portfolio/ecosystem-graphic.twig' %}
+
+				<div class="ecosystem__overlay">
+
+					<div class="ecosystem__overlay--buttons">
+						{% for option in eco_options %}
+							<button
+								class="eco-button"
+								data-option="{{ option }}"
+								data-connections="{{ post.get_field( option ~ '_connections') | join(',') }}"
+								data-text="{{ post.get_field( option ~ '_text') }}"
+								aria-label="{{ option }}">
+							</button>
+						{% endfor %}
+					</div>
+
+					<div class="ecosystem__overlay--text">
+						<div id="updated-text-elements" class="updated-text">
+							<h3 id="updated-text-heading" class="updated-text__heading">Click on a user type to learn more</h3>
+							<hr>
+							<p id="updated-text-content"></p>
+						</div>
+						<div class="default-text" id="defaultText">
+							<picture class="default-image">
+								{% include 'shared/media.twig' with {
+									source: theme.link ~ '/src/assets/img/dev/pages/portfolio/bulb-icon.png',
+									alt: 'Digital portfolios'
+								}%}
+							</picture>
+							<h3 class="default-text__heading">
+								{{ post.get_field( 'default_title') }}
+							</h3>
+							<hr>
+							<p class="default-text__content">
+								{{ post.get_field( 'default_content') }}
+							</p>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+</section>

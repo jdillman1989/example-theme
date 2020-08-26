@@ -1,0 +1,27 @@
+<section id="features" class="solutions-features">
+    <div class="solutions-features__wrapper {% if image_first %}reorder{% endif %}">
+        <div class="solutions-features__col solutions-features__col--one">
+			<div class="solutions-features__decoration">
+				{% include 'shared/media.twig' with {
+					source: Image(image_decoration).src,
+					alt: Image(image_decoration).alt,
+					class: 'solutions-features__decoration--img',
+				}%}
+			</div>
+			<header class="solutions-features__heading">
+				<h2 class="solutions-features__title">{{ title }}</h2>
+                {{ subtitle }}
+			</header>
+			{{ content }}
+        </div>
+        <div class="solutions-features__col solutions-features__col--two">
+            <picture class="solutions-features__featured-image">
+                {% include 'shared/media.twig' with {
+                    source: image.url,
+                    alt: image.alt,
+                    class: 'solutions-features__featured-img',
+                }%}
+            </picture>
+        </div>
+    </div>
+</section>

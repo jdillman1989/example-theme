@@ -1,0 +1,30 @@
+{% set tagName = href is defined ? 'a' : 'button' %}
+
+{% set variation = variation is defined ? variation : 'filled' %}
+{% set size = size is defined ? size : 'normal' %}
+{% set style = style is defined ? style : 'primary' %}
+
+{% set styleClass = [
+	'btn--var-' ~ variation,
+	'btn--size-' ~ size,
+	'btn--style-' ~ style
+]%}
+
+<{{ tagName }}
+	{{ href is defined ? 'href="' ~ href ~ '"' }}
+
+	{% for key, value in attr %}
+		{{ key }}="{{ value }}"
+	{% endfor %}
+
+	{% if external %}
+		target="_blank"
+		rel="noopener noreferrer"
+	{% endif %}
+
+	class="btn {{ styleClass|join(' ') }} {{ class }}">
+	<span class="btn__text">{{ label }}</span>
+	<span class="btn__icon">
+		{% include 'icons/button-arrow.svg.twig' %}
+	</span>
+</{{ tagName }}>

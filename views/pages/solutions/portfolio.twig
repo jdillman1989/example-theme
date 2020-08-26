@@ -1,0 +1,41 @@
+<section id="portfolio" class="portfolio">
+    <div class="portfolio__wrapper">
+        <div class="portfolio__col portfolio__col--one">
+			<div class="portfolio__col--wrapper">
+				<header class="portfolio__heading">
+					<div class="portfolio__decoration">
+						{% include 'shared/media.twig' with {
+							source: theme.link ~ '/src/assets/img/dev/pages/solutions/portfolio-decoration.svg',
+							alt: 'bulb',
+							class: 'portfolio__decoration--img',
+						}%}
+					</div>
+					<h2 class="portfolio__title">{{ post.get_field('portfolio_title') }}</h2>
+				</header>
+				<picture class="portfolio__featured-image">
+					{% include 'shared/media.twig' with {
+						source: post.get_field('portfolio_image').url,
+						alt: post.get_field('portfolio_image').alt,
+						class: 'portfolio__featured-img',
+					}%}
+				</picture>
+			</div>
+        </div>
+        <div class="portfolio__col portfolio__col--two">
+			<div class="portfolio__col--wrapper">
+				{% for item in post.get_field('portfolio_items') %}
+					<div class="portfolio__type">
+						{{ item.item_content }}
+						{% include 'shared/button.twig' with {
+							tagName: 'a',
+							variation: 'simple',
+							style: 'dark-primary',
+							href: item.item_button.url,
+							label: item.item_button.title
+						}%}
+					</div>
+				{% endfor %}
+			</div>
+        </div>
+    </div>
+</section>

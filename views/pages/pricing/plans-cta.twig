@@ -1,0 +1,73 @@
+{% set pricing_plans = post.get_field('pricing_plans_items') %}
+<section id="plans-cta" class="plans-cta">
+	<div class="plans-cta__wrapper">
+		<h2 class="plans-cta__title">{{ post.get_field('pricing_plans_cta_title') }}</h2>
+		<div class="plans-cta__slider slider">
+			<div class="slider__items">
+
+				{% for item in pricing_plans %}
+					<div class="slider__item item">
+						<div class="item__wrapper">
+							<div class="item__content">
+								<picture class="item__featured-picture">
+									{% include 'shared/media.twig' with {
+										source: Image(item.pricing_background_image).src,
+										alt: Image(item.pricing_background_image).alt,
+										class: 'item__featured-image',
+									}%}
+								</picture>
+
+								<h3 class="item__name show-for-sr">{{ item.pricing_plan_title }}</h3>
+
+								<picture class="item__logo-picture">
+									{% include 'shared/media.twig' with {
+										source: Image(item.pricing_plan_logo).src,
+										alt: Image(item.pricing_plan_logo).alt,
+										class: 'item__logo-image',
+									}%}
+								</picture>
+
+								<div class="item__description">{{ item.pricing_plan_description }}</div>
+
+								<div class="item__cta">
+									{% include 'shared/button.twig' with {
+										href: item.pricing_plan_button.url,
+										label: item.pricing_plan_button.title,
+										variation: 'simple',
+										size: 'large',
+										style: 'dark-primary',
+									}%}
+								</div>
+							</div>
+						</div>
+					</div>
+				{% endfor %}
+			</div>
+
+			<nav class="slider__controls">
+				<button
+					aria-label="Previous plan"
+					class="slider__arrow slider__arrow--prev"
+					data-direction="prev">
+					{% include 'icons/slider-arrow.svg.twig' with {
+						direction: 'prev',
+					}%}
+				</button>
+
+				<div class="slider__indicator">
+					<span class="slider__indicator-current">1</span>
+					<span class="slider__indicator-total">/{{ pricing_plans | length }}</span>
+				</div>
+
+				<button
+					aria-label="Next plan"
+					class="slider__arrow slider__arrow--prev"
+					data-direction="next">
+					{% include 'icons/slider-arrow.svg.twig' with {
+						direction: 'next',
+					}%}
+				</button>
+			</nav>
+		</div>
+	</div>
+</section>

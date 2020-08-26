@@ -1,0 +1,46 @@
+.not-found {
+	text-align: center;
+
+	&__header {
+		margin-top: rem-calc(80);
+		margin-bottom: rem-calc(80);
+
+		@include media('>=tablet') {
+			margin-top: rem-calc(100);
+			margin-bottom: rem-calc(120);
+		}
+
+		@include media('>=desktop-small') {
+			margin-top: rem-calc(160);
+			margin-bottom: rem-calc(180);
+		}
+
+		@include media('>=desktop-large') {
+			margin-top: rem-calc(200);
+			margin-bottom: rem-calc(240);
+		}
+
+		&-title {
+			@extend %section-heading__title;
+			margin-bottom: rem-calc(10);
+		}
+
+		&-description {
+			@extend %section-body__copy;
+
+			font-size: rem-calc(16);
+
+			@include media('>=desktop-small') {
+				font-size: rem-calc(20);
+			}
+
+			@include media('>=desktop-medium') {
+				font-size: rem-calc(24);
+			}
+
+			@include media('>=desktop-large') {
+				font-size: rem-calc(32);
+			}
+		}
+	}
+}

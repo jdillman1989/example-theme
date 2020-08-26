@@ -1,0 +1,26 @@
+{% extends 'base.twig' %}
+
+{% set template = 'home' %}
+
+{% block content %}
+	<div id="home" class="page page--home">
+		{% include 'pages/home/hero.twig' %}
+		{% include 'pages/home/partners.twig'%}
+		{% include 'pages/home/portfolio-types.twig'%}
+		{% include 'sections/remote-learning.twig' %}
+		{% include 'shared/features.twig' with {
+			title: post.get_field('features_title'),
+			subtitle: post.get_field('features_subtitle'),
+			content: post.get_field('features_content'),
+			image_decoration: post.get_field('features_image_decoration'),
+			image: post.get_field('features_image'),
+			image_first: true
+		} %}
+		{% include 'pages/home/news.twig'%}
+		{% include 'sections/case-studies.twig' %}
+		{% include 'pages/home/plans.twig' %}
+		{% if (post.get_field('field_override_hide_contact_bar') != 'yes')  %}
+			{% include 'shared/contact-bar.twig' %}
+		{% endif %}
+	</div>
+{% endblock %}

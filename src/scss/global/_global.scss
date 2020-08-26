@@ -1,0 +1,166 @@
+body {
+	overflow-x: hidden;
+	overflow-anchor: none;
+	padding-top: rem-calc(60);
+	font-family: $font-helvetica;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	color: #000;
+
+	@include media('>phone') {
+		padding-top: rem-calc(80);
+	}
+
+	@include media('>desktop-small') {
+		padding-top: rem-calc(100);
+	}
+
+	@include media('>desktop-medium') {
+		padding-top: rem-calc(120);
+	}
+
+	&.no-scroll {
+		&--mobile {
+			@include media('<=phone') {
+				overflow: hidden;
+			}
+		}
+
+		&--desktop {
+			@include media('>phone') {
+				overflow: hidden;
+			}
+		}
+	}
+}
+
+#main-content {
+	overflow-x: hidden;
+}
+
+.skip-link {
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 500;
+	padding: rem-calc(13) rem-calc(13) rem-calc(10);
+	font-size: rem-calc(12);
+	font-weight: bold;
+	text-transform: uppercase;
+	color: $color-primary;
+	background: white;
+	opacity: 0;
+	pointer-events: none;
+
+	&:focus {
+		opacity: 1;
+		padding: 20px 30px;
+		background-color: #f0f0f0;
+		top: 20px;
+		left: 20px;
+		width: auto;
+		height: auto;
+		margin: 0;
+		clip: auto;
+		overflow: visible;
+	}
+}
+
+.show-for-sr {
+	font-size: 0;
+	width: 1px;
+	height: 1px;
+	display: inline-block;
+	overflow: hidden;
+	position: absolute !important;
+	border: 0 !important;
+	padding: 0 !important;
+	margin: 0 !important;
+	clip: rect(1px, 1px, 1px, 1px);
+}
+
+.page {
+	position: relative;
+}
+
+.content .page {
+	padding-bottom: rem-calc(120);
+
+	@include media('>=phone') {
+		padding-bottom: rem-calc(100);
+	}
+
+	.owl-carousel .animated {
+		animation-duration: .35s;
+	}
+}
+
+/**
+ * Wordpress WYSIWYG Alignment Styles
+ */
+.alignleft,
+.alignright {
+	max-width: 48%;
+	height: auto;
+	padding-bottom: 1rem;
+	margin: 0;
+}
+
+.alignleft {
+	float: left;
+	padding-right: 1rem;
+}
+
+.alignright {
+	float: right;
+	padding-left: 1rem;
+}
+
+.aligncenter {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+/*
+  This will hide the focus indicator if the element receives focus via the mouse,
+  but it will still show up on keyboard focus. As per focus-visible polyfill instructions:
+  https://github.com/WICG/focus-visible
+*/
+.js-focus-visible :focus:not(.focus-visible) {
+	outline: none;
+}
+
+a {
+	color: darken($color-primary, 7%);
+	transition: color .2s;
+
+	&:hover {
+		color: darken($color-accent, 7%);
+	}
+}
+
+// Adjusting for Lazyloaded Images
+img.lazyload:not([src]) {
+	visibility: hidden;
+}
+
+
+.logged-in.admin-bar {
+	.header {
+		top: 32px !important;
+
+		@include media('<=782px') {
+			top: 46px !important;
+		}
+	}
+
+	.page--catalog .archive__filters.fixed,
+	.header__sticky-active .megamenu {
+		margin-top: 32px !important;
+
+		@include media('<=782px') {
+			margin-top: 46px !important;
+		}
+	}
+}

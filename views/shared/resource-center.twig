@@ -1,0 +1,37 @@
+<section id="resource-center" class="resource-center">
+	<div class="resource-center__wrapper">
+		<div class="resource-center__col resource-center__col--one">
+			<div class="resource-center__decoration">
+				{% include 'shared/media.twig' with {
+					source: theme.link ~ '/src/assets/img/dev/pages/pricing/resource-center-decoration.svg',
+					alt: 'Resources',
+					class: 'resource-center__decoration-image',
+				}%}
+			</div>
+
+			<h2 class="resource-center__title">{{ post.get_field('resource_center_cta_title') }}</h2>
+			<div class="resource-center__text">
+				{{ post.get_field('resource_center_cta_content') }}
+			</div>
+			<div class="resource-center__cta">
+				{% include 'shared/button.twig' with {
+					href: post.get_field('resource_center_cta_button').url,
+					label: post.get_field('resource_center_cta_button').title,
+					variation: 'simple',
+					size: 'large',
+					style: 'dark-primary',
+				}%}
+			</div>
+		</div>
+
+		<div class="resource-center__col resource-center__col--two">
+			<picture class="resource-center__picture">
+				{% include 'shared/media.twig' with {
+					source: post.get_field('resource_center_image').url,
+					alt: post.get_field('resource_center_image').alt,
+					class: 'resource-center__image',
+				}%}
+			</picture>
+		</div>
+	</div>
+</section>

@@ -1,0 +1,35 @@
+.page.page--solutions .resource-center {
+
+	&::before {
+		top: auto;
+		bottom: 40%;
+
+		@include media('>desktop-small') {
+			top: rem-calc(-50);
+			bottom: auto;
+		}
+
+		@include media('>desktop-medium') {
+			top: rem-calc(-60);
+		}
+
+		@include media('>desktop-large') {
+			top: rem-calc(-80);
+		}
+	}
+
+	&__col {
+		&--one {
+			margin-top: rem-calc(40);
+			order: 1;
+
+			@include media('>phone') {
+				margin-top: 0;
+			}
+		}
+
+		&--two {
+			order: 2;
+		}
+	}
+}

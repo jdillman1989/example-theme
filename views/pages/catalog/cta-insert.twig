@@ -1,0 +1,18 @@
+{% set channel_link = post.get_field('youtube_channel_link') %}
+{% set youtube_icon = post.get_field('youtube_section_icon') %}
+
+<section id="cta-insert" class="cta-insert">
+	<a href="{{ channel_link.url }}" target="{{ channel_link.target ?: '_self' }}" rel="noopener nofollow noreferrer" class="cta-insert__link">
+		<figure class="cta-insert__figure">
+			{% include 'shared/media.twig' with {
+				source: Image(youtube_icon).src,
+				alt: Image(youtube_icon).alt,
+				class: 'cta-insert__icon',
+			}%}
+		</figure>
+		<div class="cta-insert__main">
+			<span class="cta-insert__title">{{ post.get_field('youtube_section_heading') }}</span>
+			<span class="cta-insert__subtitle">{{ post.get_field('youtube_section_content') }}</span>
+		</div>
+	</a>
+</section>

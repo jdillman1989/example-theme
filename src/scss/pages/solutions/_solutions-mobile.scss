@@ -1,0 +1,275 @@
+.page--solutions .mobile {
+	position: relative;
+	padding-top: 50%;
+	background: $color-gray-light;
+
+	@include media('>phone-small') {
+		padding-top: 70%;
+	}
+
+	@include media('>phone') {
+		padding-top: rem-calc(80);
+		padding-bottom: rem-calc(100);
+	}
+
+	@include media('>tablet') {
+		padding-top: rem-calc(150);
+		padding-bottom: rem-calc(220);
+	}
+
+	&::before {
+		content: '';
+		position: absolute;
+		top: 17%;
+		right: rem-calc(-24);
+		display: block;
+		width: rem-calc(40);
+		height: rem-calc(40);
+		border: 9px solid $color-accent-2;
+		border-radius: 300px;
+
+		@include media('>phone-small') {
+			top: 25%;
+		}
+
+		@include media('>phone') {
+			top: rem-calc(-75);
+			right: auto;
+			left: rem-calc(-75);
+			width: rem-calc(130);
+			height: rem-calc(130);
+			border: 20px solid $color-accent-2;
+		}
+	}
+
+	&__col {
+
+		&--one {
+
+			@include media('>phone') {
+				position: absolute;
+				width: 100%;
+			}
+
+			.mobile__col-wrapper {
+				position: relative;
+				width: 90%;
+				max-width: rem-calc(350);
+				margin: 0 auto;
+
+				@include media('>phone') {
+					width: 30%;
+					max-width: rem-calc(250);
+				}
+
+				@include media('>tablet') {
+					width: 26%;
+					max-width: rem-calc(300);
+				}
+
+				@include media('>desktop-large') {
+					max-width: none;
+				}
+
+				&::before {
+					content: '';
+					position: absolute;
+					top: 50%;
+					right: 0;
+					left: 0;
+					display: block;
+					width: 100%;
+					height: 70%;
+					transform: translateY(-55%);
+					background-image: url('../../src/assets/img/prod/general/plus-pattern.png');
+					background-size: rem-calc(270);
+
+					@include media('>desktop-large') {
+						background-size: rem-calc(450);
+					}
+				}
+			}
+
+			img {
+				position: relative;
+				width: 100%;
+				height: auto;
+			}
+		}
+
+		&--two {
+			@include media('>desktop-large') {
+				padding-top: rem-calc(110);
+			}
+		}
+	}
+
+	&__wrapper {
+		max-width: rem-calc(1920);
+		margin: 0 auto;
+
+		@include media('>phone') {
+			position: relative;
+		}
+
+		header {
+			padding: 0 rem-calc(10);
+
+			@include media('>phone') {
+				text-align: center;
+			}
+		}
+
+		h2 {
+			@extend %section-heading__title;
+
+			margin-bottom: rem-calc(30);
+			position: relative;
+
+			@include media('>desktop-large') {
+				font-size: rem-calc(80);
+			}
+		}
+	}
+
+	&__slider {
+		width: 170vw;
+
+		@include media('>phone') {
+			width: 100%;
+			max-width: rem-calc(1100);
+			margin: 0 auto;
+		}
+
+		@include media('>tablet') {
+			width: 85%;
+		}
+
+		@include media('>desktop-large') {
+			max-width: none;
+		}
+	}
+
+	.slider {
+
+		&__items {
+
+			@include media('>phone') {
+				display: flex;
+				flex-wrap: wrap;
+			}
+		}
+
+		&__item {
+			padding: rem-calc(8);
+			padding-right: rem-calc(12);
+
+			@include media('>phone') {
+				width: 50%;
+			}
+		}
+
+		.item {
+
+			@include media('>phone') {
+				display: flex;
+				
+				&:nth-of-type(even) {
+					justify-content: flex-end;
+				}
+			}
+
+			@include media('>desktop-large') {
+				margin-bottom: 0;
+
+				&:nth-of-type(-n+2) {
+					margin-bottom: rem-calc(60);
+				}
+			}
+
+			&__wrapper {
+				position: relative;
+				padding: rem-calc(14);
+				padding-top: rem-calc(40);
+				box-shadow: 0 5px 7px -3px fade-out(black, 0.9);
+				background: white;
+				border-radius: 6px;
+
+				@include media('>phone') {
+					width: 65%;
+					box-shadow: none;
+					background: transparent;				
+				}
+
+				@include media('>tablet') {
+					width: 50%;
+				}
+
+				img {
+					position: absolute;
+					top: rem-calc(25);
+					right: rem-calc(14);
+					width: rem-calc(80);
+					height: auto;
+
+					@include media('>desktop-large') {
+						width: rem-calc(110);
+					}
+				}
+		
+				h3 {
+					position: relative;
+					margin-bottom: rem-calc(28);
+					font-family: $font-mreaves;
+					font-size: rem-calc(28);
+		
+					@include media('>desktop-large') {
+						margin-bottom: rem-calc(40);
+						font-size: rem-calc(40);
+					}
+				}
+		
+				p {
+					@extend %section-body__copy;
+					
+					margin-bottom: 0;
+				}
+			}
+		}
+
+		&__controls {
+			display: flex;
+			align-items: center;
+			padding: 0 rem-calc(12);
+
+			@include media('>phone') {
+				display: none;
+			}
+		}
+
+		&__arrow {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			height: rem-calc(30);
+
+			svg {
+				display: block;
+				width: rem-calc(18);
+				fill: $color-primary;
+			}
+		}
+
+		&__indicator {
+			position: relative;
+			top: 1px;
+			display: flex;
+			align-items: center;
+			margin: 0 rem-calc(20);
+			font-family: $font-mreaves;
+			font-size: rem-calc(12);
+			font-variant-numeric: tabular-nums;
+			font-weight: bold;
+		}
+	}
+}

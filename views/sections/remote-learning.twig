@@ -1,0 +1,114 @@
+<section id="remote-learning" class="remote-learning">
+	<div class="remote-learning__wrapper">
+		<h2 class="remote-learning__title">Remote Learning</h2>
+
+		<div class="remote-learning__col remote-learning__col--one">
+			<div class="remote-learning__decoration">
+
+				{% include 'shared/media.twig' with {
+					source: theme.link ~ '/src/assets/img/dev/sections/remote-learning/decoration.svg',
+					alt: 'Remote Learning',
+					class: 'remote-learning__decoration-image',
+				}%}
+			</div>
+
+			<div class="remote-learning__col-wrapper">
+				<div class="remote-learning__heading">
+					<div class="remote-learning__headline">{{ options.remote_learning_title }}</div>
+				</div>
+
+				<div id="remote-learning-slider-one" class="remote-learning__slider-one slider-one">
+					<div class="slider-one__items">
+
+						{% for item in options.remote_learning_items %}
+							<div class="slider-one__item item" data-index="{{ loop.index0 }}">
+								<button aria-label="{{ item.item_label }}" class="item__button"></button>
+
+								<div class="item__wrapper">
+									<div class="item__avatar">
+										{% include 'shared/media.twig' with {
+											source: item.item_icon.url,
+											alt: item.item_icon.alt,
+											class: 'item__avatar-image',
+										}%}
+									</div>
+
+									<h3 class="item__title">{{ item.item_label }}</h3>
+								</div>
+							</div>
+						{% endfor %}
+					</div>
+
+					<nav class="slider-one__controls">
+						<button
+							aria-label="Previous user type"
+							class="slider-one__arrow slider-one__arrow--prev"
+							data-direction="prev">
+							{% include 'icons/slider-arrow.svg.twig' with {
+								direction: 'prev',
+							}%}
+						</button>
+
+						<div class="slider-one__indicator">
+							<span class="slider-one__indicator-current">1</span>
+							<span class="slider-one__indicator-total">/{{ options.remote_learning_items | length }}</span>
+						</div>
+
+						<button
+							aria-label="Next user type"
+							class="slider-one__arrow slider-one__arrow--prev"
+							data-direction="next">
+							{% include 'icons/slider-arrow.svg.twig' with {
+								direction: 'next',
+							}%}
+						</button>
+					</nav>
+				</div>
+
+				<div id="remote-learning-slider-two" class="remote-learning__slider-two slider-two">
+					<div class="slider-two__items owl-carousel">
+
+						{% for item in options.remote_learning_items %}
+							<div class="slider-two__item item" data-index="{{ loop.index0 }}">
+								<div class="item__description">
+									<p>{{ item.item_content }}</p>
+								</div>
+
+								<div class="item__cta">
+									{% include 'shared/button.twig' with {
+										href: item.item_button.url,
+										label: item.item_button.title,
+										variation: 'simple',
+										size: 'large',
+										style: 'dark-primary',
+									}%}
+								</div>
+							</div>
+						{% endfor %}
+
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="remote-learning__col remote-learning__col--two">
+			<div class="remote-learning__col-wrapper">
+				<div id="remote-learning-slider-three" class="remote-learning__slider-three slider-three">
+					<div class="slider-three__items owl-carousel">
+
+						{% for item in options.remote_learning_items %}
+							<div class="slider-three__item item">
+								{% include 'shared/media.twig' with {
+									source: item.item_image.url,
+									alt: item.item_image.alt,
+									class: 'item__image',
+								}%}
+							</div>
+						{% endfor %}
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

@@ -1,0 +1,121 @@
+.faq {
+	@extend %accordion;
+
+	padding-top: rem-calc(220);
+
+	@include media('>=413px') {
+		padding-top: rem-calc(150);
+	}
+
+	@include media('>=tablet') {
+		padding-top: rem-calc(186);
+	}
+
+	@include media('>=desktop-medium') {
+		padding-top: rem-calc(210);
+	}
+
+	@include media('>=desktop-large') {
+		padding-top: rem-calc(240);
+	}
+
+
+	&__wrapper {
+		@extend %accordion__wrapper;
+
+		padding-left: rem-calc(14);
+		padding-right: rem-calc(14);
+
+		@include media('>=phone-small') {
+			padding-left: rem-calc(24);
+			padding-right: rem-calc(24);
+		}
+
+		@include media('>=tablet') {
+			padding-left: rem-calc(20);
+			padding-right: rem-calc(20);
+		}
+
+		@include media('>=desktop-small') {
+			padding-left: rem-calc(50);
+			padding-right: rem-calc(50);
+		}
+
+		@include media('>=desktop-medium') {
+			padding-left: rem-calc(80);
+			padding-right: rem-calc(80);
+		}
+	}
+
+	&__heading {
+		@extend %accordion__heading;
+	}
+
+	&__decoration {
+		@extend %accordion__decoration;
+
+		&-image {
+			@extend %accordion__decoration-image;
+		}
+	}
+
+	&__title {
+		@extend %accordion__title;
+	}
+
+	&__accordion {
+		@extend %accordion__element-wrapper;
+	}
+
+	.accordion {
+		&__item {
+			@extend %accordion__item;
+		}
+
+		.item {
+			&__header {
+				@extend %accordion__header;
+
+				&-button {
+					@extend %accordion__header-button;
+				}
+
+				&-decoration {
+					@extend %accordion__header-decoration;
+
+					&-icon {
+						@extend %accordion__header-decoration-icon;
+					}
+				}
+
+				&-text {
+					@extend %accordion__header-text;
+				}
+			}
+
+			&__content {
+				@extend %accordion__content;
+
+				&-wrapper {
+					@extend %accordion__content-wrapper;
+				}
+
+				&-decoration {
+					@extend %accordion__content-decoration;
+
+					&-icon {
+						@extend %accordion__content-decoration-icon;
+					}
+				}
+
+				&-text {
+					@extend %accordion__content-text;
+				}
+			}
+
+			&--active .item__header .item__header-button::after {
+				@extend %accordion__header-button--active;
+			}
+		}
+	}
+}

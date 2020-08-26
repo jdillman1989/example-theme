@@ -1,0 +1,243 @@
+.page--pricing .hero {
+	position: relative;
+	padding: rem-calc(70) 0 rem-calc(30);
+	background: linear-gradient(to left, $color-secondary, $color-primary);
+
+	@include media('>=phone') {
+		padding: rem-calc(130) 0 rem-calc(50);
+		background: linear-gradient(to right, $color-secondary, $color-primary);
+	}
+
+	@include media('>=tablet') {
+		padding: rem-calc(110) 0;
+	}
+
+	@include media('>=desktop-small') {
+		padding: rem-calc(160) 0;
+	}
+
+	@include media('>=desktop-medium') {
+		padding: rem-calc(190) 0;
+	}
+
+	.circle-decoration {
+		display: block;
+		position: absolute;
+		top: 0;
+		right: 0;
+		overflow: hidden;
+		width: rem-calc(25);
+		height: rem-calc(60);
+
+		@include media('>=phone-small') {
+			width: rem-calc(35);
+			height: rem-calc(70);
+		}
+
+		@include media('>=phone') {
+			right: auto;
+			left: 0;
+			width: rem-calc(50);
+			height: rem-calc(50);
+		}
+
+		@include media('>=tablet') {
+			width: rem-calc(80);
+			height: rem-calc(70);
+		}
+
+		@include media('>=desktop-small') {
+			width: rem-calc(100);
+			height: rem-calc(90);
+		}
+
+		&::before {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			display: block;
+			width: rem-calc(60);
+			height: rem-calc(60);
+			border: 8px solid $color-accent-2;
+			box-sizing: border-box;
+			border-radius: 50%;
+
+			@include media('>=phone-small') {
+				border-width: 10px;
+				width: rem-calc(70);
+				height: rem-calc(70);
+			}
+
+			@include media('>=phone') {
+				top: auto;
+				right: 0;
+				bottom: 0;
+				left: auto;
+				width: rem-calc(80);
+				height: rem-calc(80);
+			}
+
+			@include media('>=tablet') {
+				border-width: rem-calc(20);
+				width: rem-calc(120);
+				height: rem-calc(120);
+			}
+
+			@include media('>=desktop-small') {
+				width: rem-calc(175);
+				height: rem-calc(175);
+				border-width: rem-calc(25);
+			}
+		}
+	}
+
+	&__background {
+		@extend %container;
+
+		position: absolute;
+		top: 0;
+		left: 50%;
+		transform: translateX(-50%);
+		display: none;
+		height: 100%;
+		padding-top: rem-calc(20);
+
+		@include media('>=phone') {
+			display: flex;
+			justify-content: flex-end;
+			align-items: flex-end;
+		}
+
+		&-image {
+			display: block;
+			max-width: 50%;
+			max-height: 100%;
+
+			@include media('>=tablet') {
+				max-width: 65%;
+			}
+
+			@include media('>=desktop-medium') {
+				max-width: 70%;
+			}
+		}
+	}
+
+	&__wrapper {
+		@extend %container;
+
+		position: relative;
+		padding: 0 rem-calc(24);
+
+		@include media('>=tablet') {
+			padding: rem-calc(50) rem-calc(50) 0;
+		}
+
+		@include media('>=desktop-small') {
+			padding: rem-calc(60) rem-calc(80) 0;
+		}
+
+		@include media('>=desktop-medium') {
+			padding-top: rem-calc(65);
+		}
+
+		@include media('>=desktop-large') {
+			padding-top: rem-calc(75);
+		}
+	}
+
+	&__col {
+		@include media('>=tablet') {
+			width: 50%;
+		}
+
+		@include media('>=desktop-small') {
+			width: 45%;
+		}
+	}
+
+	&__decoration {
+		position: absolute;
+		top: rem-calc(-40);
+		left: rem-calc(-30);
+		z-index: 1;
+		width: 95vw;
+		max-width: rem-calc(400);
+		opacity: 0.5;
+
+		@include media('>=phone') {
+			opacity: 1;
+		}
+
+		@include media('>=tablet') {
+			top: 0;
+			max-width: rem-calc(580);
+		}
+
+		@include media('>=desktop-small') {
+			max-width: rem-calc(630);
+		}
+
+		@include media('>=desktop-medium') {
+			max-width: rem-calc(740);
+		}
+
+		@include media('>=desktop-large') {
+			max-width: rem-calc(860);
+		}
+
+		&-image {
+			display: block;
+			width: 100%;
+		}
+	}
+
+	&__title,
+	&__description {
+		position: relative;
+		z-index: 2;
+	}
+
+	&__title {
+		@extend %section-heading__title;
+		@extend %section-heading__title--dark;
+
+		width: 60%;
+		margin-bottom: rem-calc(20);
+
+		@include media('>=tablet') {
+			width: auto;
+		}
+	}
+
+	&__description {
+		padding-right: rem-calc(50);
+		font-size: rem-calc(12);
+		line-height: 1.6;
+		color: black;
+
+		@include media('>=tablet') {
+			padding: 0;
+		}
+
+		@include media('>=tablet') {
+			font-size: rem-calc(14);
+			line-height: 1.8;
+		}
+
+		@include media('>=desktop-small') {
+			font-size: rem-calc(16);
+			line-height: 2;
+		}
+
+		@include media('>=desktop-medium') {
+			font-size: rem-calc(18);
+			font-weight: 300;
+		}
+
+		@include media('>=desktop-large') {
+			font-size: rem-calc(20);
+		}
+	}
+}

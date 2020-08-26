@@ -1,0 +1,154 @@
+.page--solutions .portfolio {
+	position: relative;
+
+	&::before {
+		content: '';
+		position: absolute;
+		top: rem-calc(5);
+		right: 0;
+		left: 0;
+		width: 100%;
+		height: rem-calc(28);
+		margin: 0 auto;
+		background-image: url(../../src/assets/img/prod/general/plus-pattern.png);
+		background-size: rem-calc(190);
+	}
+
+	&__wrapper {
+		max-width: rem-calc(1920);
+		padding: rem-calc(70) rem-calc(10);
+		margin: 0 auto;
+
+		@include media('>phone') {
+			display: flex;
+			justify-content: space-between;
+			padding: rem-calc(100) rem-calc(50);
+		}
+
+		@include media('>desktop-large') {
+			padding: rem-calc(100);
+		}
+	}
+
+	&__col {
+		position: relative;
+
+		&--one {
+
+			@include media('>phone') {
+				width: 45%;
+				padding: rem-calc(20) 0 0 rem-calc(25);
+			}
+		}
+
+		&--two {
+
+			@include media('>phone') {
+				width: 45%;
+			}
+
+			.portfolio__col--wrapper {
+				padding-top: rem-calc(40);
+
+				@include media('>phone') {
+					padding-top: rem-calc(100);
+				}
+
+				@include media('>desktop-large') {
+					display: flex;
+					justify-content: space-between;
+					flex-wrap: wrap;
+				}
+			}
+		}
+	}
+
+	&__decoration {
+		position: absolute;
+		top: rem-calc(-15);
+		left: rem-calc(-10);
+		width: 100%;
+
+		@include media('>phone') {
+			top: rem-calc(-40);
+			left: -15%;
+			width: 180%;
+		}
+
+		&--img {
+			width: 100%;
+			height: auto;
+		}
+	}
+
+	&__heading {
+		@extend %section-body__copy;
+	}
+
+	&__title {
+		@extend %section-heading__title;
+
+		position: relative;
+		margin-bottom: rem-calc(28);
+
+		@include media('>desktop-large') {
+			margin-bottom: rem-calc(40);
+		}
+	}
+
+	&__type {
+		margin-bottom: rem-calc(35);
+
+		@include media('>desktop-large') {
+			width: 45%;
+		}
+
+		h3 {
+			position: relative;
+			margin-bottom: rem-calc(28);
+			font-family: $font-mreaves;
+			font-size: rem-calc(28);
+
+			@include media('>desktop-large') {
+				margin-bottom: rem-calc(40);
+				font-size: rem-calc(40);
+			}
+		}
+
+		p {
+			@extend %section-body__copy;
+
+			margin-bottom: 0;
+		}
+	}
+
+	&__featured-image {
+
+		@include media('>desktop-large') {
+			position: relative;
+			left: rem-calc(-200);
+		}
+
+		&::before {
+			content: '';
+			position: absolute;
+			top: rem-calc(40);
+			right: rem-calc(-40);
+			display: block;
+			width: rem-calc(40);
+			height: rem-calc(40);
+			border: 9px solid $color-accent;
+			border-radius: 300px;
+
+			@include media('>phone') {
+				display: none;
+			}
+		}
+	}
+
+	&__featured-img {
+		position: relative;
+		width: 100%;
+		height: auto;
+	}
+}
